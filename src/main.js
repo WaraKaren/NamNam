@@ -1,6 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
 
-import { myFunction } from './lib/index.js';
+// import { myFunction } from './lib/index.js';
 import home from './Components/home.js';
 import login from './Components/login.js';
 import error from './Components/error.js';
@@ -40,9 +40,3 @@ window.onpopstate = () => {
 };
 
 navigateTo(window.location.pathname || defaultRoute);
-
-// const formLogin = document.querySelector('.classForm');
-
-// // formLogin.addEventListener('submit', (e) => {
-
-// // })

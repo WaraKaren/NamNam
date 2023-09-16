@@ -12,7 +12,6 @@ function home(navigateTo) {
   });
   buttonRegister.addEventListener('click', () => {
     navigateTo('/register');
-    console.log(navigateTo('/register'));
   });
 
   title.textContent = 'Welcome to my project';

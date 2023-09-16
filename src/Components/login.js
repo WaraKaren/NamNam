@@ -26,4 +26,6 @@ function login(navigateTo) {
   return section;
 }
 
+// const formLogin = document.querySelector('.classForm');
+
 export default login;
