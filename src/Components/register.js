@@ -1,4 +1,4 @@
-export const register = (navigateTo) => {
+const register = (navigateTo) => {
   const section = document.createElement('section');
   section.textContent = 'Bienvenida al registro';
   const buttonHome = document.createElement('button');
