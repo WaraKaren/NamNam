@@ -4,7 +4,7 @@ function login(navigateTo) {
   const title = document.createElement('h2');
   const buttonReturn = document.createElement('button');
   const form = document.createElement('form');
-  form.className = 'classForm';
+  form.className = 'Form';
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
   const buttonLogin = document.createElement('button');

@@ -1,13 +1,37 @@
 const register = (navigateTo) => {
   const section = document.createElement('section');
   section.textContent = 'Bienvenida al registro';
-  const buttonHome = document.createElement('button');
+  const buttonWelcome = document.createElement('button');
+  const form = document.createElement('form');
+  form.className = 'FormRegister';
+  const inputEmailRegister = document.createElement('input');
+  const inputPassRegister = document.createElement('input');
+  const buttonSubmitRegister = document.createElement('button');
+  // const signInForm = document.querySelector('.FormRegister');
+  buttonWelcome.textContent = 'Registrar';
+  buttonWelcome.addEventListener('click', () => navigateTo('/welcome'));
 
-  buttonHome.textContent = 'Regresar al home';
-  buttonHome.addEventListener('click', () => navigateTo('/'));
+  inputEmailRegister.placeholder = 'Write email';
+  inputPassRegister.placeholder = 'Write password';
+  section.textContent = 'Register';
+  buttonSubmitRegister.textContent = 'go';
 
-  section.append(buttonHome);
+  buttonSubmitRegister.textContent = 'Return to home';
+  buttonSubmitRegister.addEventListener('click', () => {
+    navigateTo('/');
+  });
+
+  section.append(form, buttonWelcome, inputEmailRegister, inputPassRegister, buttonSubmitRegister);
   return section;
+  //  section.append(form, buttonWelcome);
+  // para que el formulario aparesca en Firebase
+  FormRegister.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = inputEmailRegister.value;
+    const password = inputPassRegister.value;
+    console.log(email, password);
+  });
 };
 
+// const formLogin = document.querySelector('.classForm');
 export default register;
