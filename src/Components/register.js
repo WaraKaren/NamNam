@@ -1,8 +1,9 @@
-import { createUserWithEmail } from '../firebaseconfig';
+import { createUserWithEmail } from './utils';
 
 const register = (navigateTo) => {
   const section = document.createElement('section');
   const logoRegister = document.createElement('img');
+  logoRegister.className = 'logoClass';
   logoRegister.src = 'imagenes/logo.png';
   section.textContent = 'Crea tu cuenta';
   const form = document.createElement('form');
@@ -37,51 +38,9 @@ const register = (navigateTo) => {
     const email = e.target.emailReg.value;
     const password = e.target.passwordReg.value;
     console.log(email, password); // nos muestra el email y clave digitado
-    createUserWithEmail(email, password)
-      .then((userCredential) => {
-        // console.log(userCredential);
-        navigateTo('/welcome');
-      })
-      .catch((error) => {
-        // console.log(error);
-      });
-    // const mensaje = 'firebase ';
-    // switch (mensaje) {
-    //   case 'Firebase: Error (auth/email-already-in-use).':
-    //     // alert('Email already in use');
-    //     break;
-    //   default:
-    //     // console.log('default');
-    // }
+    createUserWithEmail(email, password, navigateTo);
   });
 
-  // const errorMessage = ' ';
-  // console.log("prueba", errorMessage);
-
-  // if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') {
-  //   alert('Email ya está en uso');
-  // } else if (errorMessage === 'Firebase: Error (auth/passwords-not-match).') {
-  //   alert('Las contraseñas no coinciden');
-  // } else if (
-  //   errorMessage === 'Firebase: Password should be at least 6 characters (auth/weak-password).'
-  // ) {
-  //   alert('La contraseña debe tener al menos 6 caracteres');
-  // } else if (errorMessage === 'Firebase: Error (auth/invalid-email).') {
-  //   alert('Email inválido');
-  // }
-  // // function mensajeError(error) {
-  // const mensajes = {
-  //   'Firebase: Error (auth/email-already-in-use).':  'Email already in use'
-
-  // };
-  // const erroresdefault = 'error no encontrado';
-  // const errores = mensajes(error) || erroresdefault;
-  //   console.log('prueba1', errores);
-  // }
-  // const error = 'eerroor ';
-  // mensajeError(error);
-
-  // eslint-disable-next-line max-len
   form.append(
     inputEmailRegister,
     inputPassRegister,
@@ -92,14 +51,6 @@ const register = (navigateTo) => {
   );
   section.append(logoRegister, form);
   return section;
-  //  section.append(form, buttonWelcome);
-  // para que el formulario aparesca en Firebase
-  //   FormRegister.addEventListener('submit', async (e) => {
-  //     e.preventDefault();
-  //     const email = inputEmailRegister.value;
-  //     const password = inputPassRegister.value;
-  //     console.log(email, password);
-  //   });
 };
 
 export default register;
