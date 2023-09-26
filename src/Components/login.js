@@ -1,27 +1,31 @@
 // file login.js
 function login(navigateTo) {
   const section = document.createElement('section');
+  const logoLogin = document.createElement('img');
+  logoLogin.src = 'imagenes/logo.png';
   const title = document.createElement('h2');
-  const buttonReturn = document.createElement('button');
   const form = document.createElement('form');
   form.className = 'Form';
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
+  const buttonForgotPass = document.createElement('button');
   const buttonLogin = document.createElement('button');
+  const buttonReturn = document.createElement('button');
 
-  inputEmail.placeholder = 'Write email';
-  inputPass.placeholder = 'pass';
+  inputEmail.placeholder = 'Escribe tu correo electrónico';
+  inputPass.placeholder = 'Escribe tu contraseña';
 
-  title.textContent = 'Login';
-  buttonLogin.textContent = 'go';
+  buttonForgotPass.textContent = '¿Olvidaste tu contraseña?';
 
-  buttonReturn.textContent = 'Return to home';
+  title.textContent = 'Inicia sesión';
+  buttonLogin.textContent = 'Iniciar sesión';
+
+  buttonReturn.textContent = 'Regresar';
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
 
-  form.append(inputEmail, inputPass, buttonLogin);
-  section.append(title, form, buttonReturn);
+  section.append(logoLogin, title, form, inputEmail, inputPass, buttonLogin, buttonReturn);
 
   return section;
 }
