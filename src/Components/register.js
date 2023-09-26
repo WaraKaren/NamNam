@@ -2,32 +2,40 @@ import { createUserWithEmail } from './utils';
 
 const register = (navigateTo) => {
   const section = document.createElement('section');
-  const logoRegister = document.createElement('img');
-  logoRegister.className = 'logoClass';
-  logoRegister.src = 'imagenes/logo.png';
-  section.textContent = 'Crea tu cuenta';
+  section.className = 'sectionRegister';
+  const divOne = document.createElement('div');
+  divOne.className = 'divOneRegister';
+  const logo = document.createElement('img');
+  logo.className = 'logoRegister';
+  logo.src = 'imagenes/logo.png';
+  const title = document.createElement('h1');
+  title.textContent = 'Crea tu cuenta';
+  title.className = 'titleRegister';
+  const divTwo = document.createElement('div');
+  divTwo.className = 'divTwoRegister';
   const form = document.createElement('form');
   form.className = 'FormRegister';
   form.setAttribute('data-algo', 'algo');
   const inputEmailRegister = document.createElement('input');
-  inputEmailRegister.className = 'emailReg';
-  inputEmailRegister.id = 'emailReg';
+  inputEmailRegister.placeholder = 'Escribe tu correo electrónico';
+  inputEmailRegister.className = 'emailRegister';
+  inputEmailRegister.id = 'emailRegister';
   const inputPassRegister = document.createElement('input');
-  inputPassRegister.className = 'passwordReg';
-  inputPassRegister.id = 'passwordReg';
+  inputPassRegister.placeholder = 'Escribe tu contraseña';
+  inputPassRegister.className = 'passwordRegister';
+  inputPassRegister.id = 'passwordRegister';
   const textPassword = document.createElement('p');
   textPassword.textContent = 'Debe contener mínimo 6 caracteres';
+  textPassword.className = 'textPasswordRegister';
   const inputConfirmPassRegister = document.createElement('input');
-  const buttonWelcome = document.createElement('button');
-  const buttonSubmitRegister = document.createElement('button');
-  inputEmailRegister.placeholder = 'Escribe tu correo electrónico';
-  inputPassRegister.placeholder = 'Escribe tu contraseña';
   inputConfirmPassRegister.placeholder = 'Confirma tu contraseña';
-
+  const buttonWelcome = document.createElement('button');
   buttonWelcome.textContent = 'Registrar';
+  const buttonSubmitRegister = document.createElement('button');
+  buttonSubmitRegister.textContent = 'Volver';
+
   buttonWelcome.addEventListener('click', form.submit());
 
-  buttonSubmitRegister.textContent = 'Regresar';
   buttonSubmitRegister.addEventListener('click', () => {
     navigateTo('/');
   });
@@ -37,10 +45,13 @@ const register = (navigateTo) => {
     // console.log(e.target);
     const email = e.target.emailReg.value;
     const password = e.target.passwordReg.value;
-    console.log(email, password); // nos muestra el email y clave digitado
+    // console.log(email, password); // nos muestra el email y clave digitado
     createUserWithEmail(email, password, navigateTo);
   });
 
+  section.append(divOne, divTwo);
+  divOne.append(logo, title);
+  divTwo.append(form);
   form.append(
     inputEmailRegister,
     inputPassRegister,
@@ -49,7 +60,7 @@ const register = (navigateTo) => {
     buttonWelcome,
     buttonSubmitRegister,
   );
-  section.append(logoRegister, form);
+
   return section;
 };
 
