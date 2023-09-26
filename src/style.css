@@ -45,6 +45,22 @@ input {
 
 /*Esta sección corresponde a Welcome*/
 
+.containerWelcome{}
+
+.divOneWelcome{}
+
+.logoWelcome {
+    width: 12em;
+    height: auto;
+    object-fit: cover;
+    border-radius: ;
+}
+.mensajeWelcomw{}
+
+.titleWelcome{}
+
+.divTwoWelcome{}
+
 /*Media query para tablet*/
     /*Home*/
     /*Login*/
