@@ -1,6 +1,6 @@
 // eslint-disable-next-line max-len
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './firebaseconfig';
+import { auth } from '../firebaseconfig';
 
 export const createUserWithEmail = (email, password, navigateTo) => new Promise(() => {
 // Ejecutor (el código productor, "cantante")

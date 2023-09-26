@@ -1,5 +1,33 @@
-.logoClass {
-    width: 12em;
-    height: auto;
-    object-fit: cover;
-}
+/*Esta sección corresponde a Home*/
+
+/*Esta sección corresponde a Login*/
+
+/*Esta sección corresponde a Register*/
+
+/*Esta sección corresponde a Welcome*/
+
+/*Media query para tablet*/
+    /*Home*/
+    /*Login*/
+    /*Register*/
+    .logoClass {
+        width: 12em;
+        height: auto;
+        object-fit: cover;
+    }
+    /*Welcome*/
+
+/*Media query para celular*/
+
+@media screen and (max-width:450px) {
+
+    /*Home*/
+    /*Login*/
+    /*Register*/
+    .logoClass {
+        width: 12em;
+        height: auto;
+        object-fit: cover;
+    }
+    /*Welcome*/
+    };
