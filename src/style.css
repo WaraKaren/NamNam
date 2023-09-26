@@ -62,16 +62,19 @@ input {
 .divTwoWelcome{}
 
 /*Media query para tablet*/
+@media screen and (max-width:600px) {
     /*Home*/
     /*Login*/
     /*Register*/
-    .logoClass {
+    
+    .logoRegister {
         width: 12em;
         height: auto;
         object-fit: cover;
+        align-content: center;
     }
     /*Welcome*/
-
+}
 /*Media query para celular*/
 
 @media screen and (max-width:450px) {
