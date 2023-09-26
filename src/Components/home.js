@@ -1,12 +1,16 @@
 // file home.js
 function home(navigateTo) {
   const section = document.createElement('section');
+  const logoHome = document.createElement('img');
+  logoHome.src = 'imagenes/logo.png';
   const title = document.createElement('h2');
   const buttonLogin = document.createElement('button');
+  const buttonGoogle = document.createElement('button');
   const buttonRegister = document.createElement('button');
 
-  buttonLogin.textContent = 'login';
-  buttonRegister.textContent = 'registrarse';
+  buttonLogin.textContent = 'Iniciar sesión';
+  buttonGoogle.textContent = 'Iniciar sesión con Google';
+  buttonRegister.textContent = 'Registrarse';
   buttonLogin.addEventListener('click', () => {
     navigateTo('/login');
   });
@@ -14,9 +18,9 @@ function home(navigateTo) {
     navigateTo('/register');
   });
 
-  title.textContent = 'Welcome to my project';
+  title.textContent = '¡Bienvenida a Ñam Ñam!';
 
-  section.append(title, buttonLogin, buttonRegister);
+  section.append(logoHome, title, buttonLogin, buttonGoogle, buttonRegister);
   return section;
 }
 
