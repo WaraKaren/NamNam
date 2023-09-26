@@ -2,6 +2,7 @@
 function home(navigateTo) {
   const section = document.createElement('section');
   const logoHome = document.createElement('img');
+  logoHome.className = 'logoHome';
   logoHome.src = 'imagenes/logo.png';
   const title = document.createElement('h2');
   const buttonLogin = document.createElement('button');
