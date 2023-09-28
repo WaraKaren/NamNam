@@ -43,8 +43,8 @@ const register = (navigateTo) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault(); // cancela el comportamiento por defecto de refrescar la página
     // console.log(e.target);
-    const email = e.target.emailReg.value;
-    const password = e.target.passwordReg.value;
+    const email = e.target.emailRegister.value;
+    const password = e.target.passwordRegister.value;
     // console.log(email, password); // nos muestra el email y clave digitado
     createUserWithEmail(email, password, navigateTo);
   });
