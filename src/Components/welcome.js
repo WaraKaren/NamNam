@@ -21,8 +21,7 @@ const welcome = (navigateTo) => {
   buttonHome.addEventListener('click', () => navigateTo('/'));
 
   section.append(divOne, divTwo);
-  divOne.append(logo, mensajeWelcome, titleWelcome);
-  divTwo.append(buttonHome);
+  divOne.append(logo, mensajeWelcome, titleWelcome, buttonHome);
 
   return section;
 };

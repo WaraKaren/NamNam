@@ -39,6 +39,51 @@ input {
 }
 
 
+/*Esta sección corresponde a Login*/
+/*Esta sección corresponde a Register*/
+
+/*Esta sección corresponde a Welcome*/
+
+.containerWelcome {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.divOneWelcome{    
+/*     display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.logoWelcome {
+/*     width: 12em;
+    height: auto;
+    object-fit: cover;
+    border-radius: ; */
+/*     position: absolute;
+    bottom: 0; 
+    right: 50%;
+    transform: translateX(50%); */
+}
+.mensajeWelcomw{}
+
+.titleWelcome{}
+
+.divTwoWelcome{}
+
+.buttonHomeWelcome{
+/*     display: flex;
+    justify-content: center;
+    align-items: center; */
+    position: absolute;
+    top: 100%;
+    right: 0;  
+}
+
+/*Media query para tablet*/
 /*Media query para tablet
 @media screen and (max-width:600px) {
     /*Home*/
