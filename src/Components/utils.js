@@ -10,15 +10,17 @@ import {
 import { auth } from '../firebaseconfig';
 
 export const createUserWithEmail = (email, password, navigateTo) => new Promise(() => {
-// Ejecutor (el código productor, "cantante")
+  // Ejecutor (el código productor, "cantante")
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => { // => respuesta positiva
+    .then((userCredential) => {
+      // => respuesta positiva
       window.console.log('USERCredential', userCredential);
       // const user = userCredential.user;
       // console.log('USER', user);
       navigateTo('/welcome');
     })
-    .catch((error) => { // => respuesta negativa
+    .catch((error) => {
+      // => respuesta negativa
       const errorCode = error.code;
       // => 1XX = Informativo
       // 2XX = exitosa
@@ -33,7 +35,7 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
           alert('Este correo ya está en uso');
           break;
         case 'Firebase: Error (auth/passwords-not-match).':
-          alert('The passwords don\'t match');
+          alert("The passwords don't match");
           break;
         case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
           alert('La contraseña debe contener mínimo 6 caracteres');
@@ -53,14 +55,14 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
         case 'Firebase: Error (auth/cancelled-popup-request)':
           alert('The request was canceled');
           break;
-        // case 'Firebase: Error (auth/popup-blocked).':
-        //   alert('the popup was blocked');
-        //   break;
+          // case 'Firebase: Error (auth/popup-blocked).':
+          //   alert('the popup was blocked');
+          //   break;
         default:
           alert(errorCode);
       }
-    // modalError.styled = 'block';
-    // modaleError.
+      // modalError.styled = 'block';
+      // modaleError.
     });
 });
 
@@ -79,7 +81,7 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
           alert('Este correo ya está en uso');
           break;
         case 'Firebase: Error (auth/passwords-not-match).':
-          alert('The passwords don\'t match');
+          alert("The passwords don't match");
           break;
         case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
           alert('La contraseña debe contener mínimo 6 caracteres');
