@@ -6,11 +6,7 @@
 // import { auth } from '../firebaseconfig';
 
 // file home.js
-
-// const getUserName = () => {
-//   const username = (auth?.currentUser?.displayName) || "";
-//   return `Bienvenida ${username}`;
-// };
+import { entrarPrueba } from './utils.js';
 function home(navigateTo) {
   const section = document.createElement('section');
   section.className = 'containerHome';
@@ -28,9 +24,11 @@ function home(navigateTo) {
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'bttnLoginHome';
   buttonLogin.textContent = 'Inicia sesión';
-  const buttonGoogle = document.createElement('button');
+  const buttonGoogle = document.createElement('img');
   buttonGoogle.className = 'buttonGoogle';
   buttonGoogle.id = 'buttonGoogle';
+  buttonGoogle.src = 'imagenes/btn_google_signin_light_normal_web@2x.png';
+  buttonGoogle.alt = 'imagen botón Google';
   const buttonRegister = document.createElement('button');
   buttonRegister.className = 'bttnRegisterHome';
   buttonRegister.textContent = 'Regístrate';
@@ -39,36 +37,14 @@ function home(navigateTo) {
     navigateTo('/login');
   });
 
-  // buttonGoogle.addEventListener('click', async (e) => {
-  //   e.preventDefault();
-  // Before
-  // ==============
-
-  // signInWithRedirect(auth, provider)
-  //   .then(() => {
-  //     getRedirectResult(auth)
-  //       .then((result) => { console.log(result.user); });
-  //   });
-  // entrarPrueba().then((res) => {
-  //   debugger
-
-  //   console.log(res);
-  //   navigateTo('/welcome');
-  // }).catch((err) => { console.log(err.message); });
-  // navigateTo('/welcome')
-
-  // try {
-  //   debugger;
-  //   const provider = new GoogleAuthProvider();
-  //   console.log(await getUserName())
-  //   await signInWithRedirect(auth, provider);
-
-  // } catch (error) {
-  //     console.log("error", error)
-  //     navigateTo('/error');
-
-  // }
-  // });
+  buttonGoogle.addEventListener('click', () => {
+    navigateTo('/google');
+    entrarPrueba().then((res) => {
+      console.log(res);
+      navigateTo('/welcome');
+    }).catch((err) => { console.log(err.message); });
+    navigateTo('/welcome');
+  });
 
   buttonRegister.addEventListener('click', () => {
     navigateTo('/register');

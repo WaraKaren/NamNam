@@ -2,12 +2,11 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  // GoogleAuthProvider,
-  // // signInWithRedirect,
-  // signOut,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  signOut,
   // getRedirectResult,
 } from 'firebase/auth';
-
 import { auth } from '../firebaseconfig';
 
 export const createUserWithEmail = (email, password, navigateTo) => new Promise(() => {
@@ -108,45 +107,9 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
     });
 });
 
-// getRedirectResult(auth)
-// .then((result) => {
-//   navigateTo('/welcome');
-//   // This gives you a Google Access Token. You can use it to access Google APIs.
-//   const credential = GoogleAuthProvider.credentialFromResult(result);
-//   console.log('CREDENTIAL', credential);
-//   const token = credential.accessToken;
-//   console.log('TOKEN', token);
-//   // // The signed-in user info.
-//   const user = result.user;
-//   console.log('USER', user);
-// // IdP data available using getAdditionalUserInfo(result)
-// // ...
-// }).catch((error) => {
-//   console.log(error);
-// Handle Errors here.
-// const errorCode = error.code;
-// const errorMessage = error.message;
-// // The email of the user's account used.
-// const email = error.customData.email;
-// // The AuthCredential type that was used.
-// const credential = GoogleAuthProvider.credentialFromError(error);
-// ...
-// });
-// export const entrarPrueba = async () => {
-//   debugger
+export const entrarPrueba = () => {
+  const provider = new GoogleAuthProvider();
+  return signInWithRedirect(auth, provider);
+};
 
-//   // await signInWithRedirect(auth, provider);
-//   const result = await getRedirectResult(auth);
-//   if (result) {
-//     debugger;
-//     // This is the signed-in user
-//     const user = result.user;
-//     // This gives you a Facebook Access Token.
-//     const credential = provider.credentialFromResult(auth, result);
-//     const token = credential.accessToken;
-//     console.log("user", user)
-//     console.log("token", token)
-//   }
-// };
-
-// export const exitFn = () => signOut(auth);
+export const exitFn = () => signOut(auth);
