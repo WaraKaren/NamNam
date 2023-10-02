@@ -1,14 +1,16 @@
-// import {
-//   signInWithRedirect,
-//   getRedirectResult,
-//   GoogleAuthProvider,
-// } from 'firebase/auth';
-// // import { provider } from './utils.js';
-// import { auth } from '../firebaseconfig';
+import {
+  signInWithRedirect,
+  getRedirectResult,
+  GoogleAuthProvider,
+} from 'firebase/auth';
+import { auth } from '../firebaseconfig';
 
 // file home.js
-import { entrarPrueba } from './utils.js';
 
+const getUserName = () => {
+  const username = (auth?.currentUser?.displayName) || ""
+  return `Bienvenida ${username}` 
+};
 function home(navigateTo) {
   const section = document.createElement('section');
   section.className = 'containerHome';
@@ -18,7 +20,9 @@ function home(navigateTo) {
   logoHome.className = 'logoHome';
   logoHome.src = 'imagenes/logo.png';
   const title = document.createElement('h2');
-  title.textContent = 'Bienvenida a Ñam Ñam';
+  const user = getUserName();
+  title.textContent = user;
+  title.id = 'userName';
   const titleTwo = document.createElement('h3');
   titleTwo.textContent = 'Tu destino culinario en línea para compartir, descubrir y deleitarte con las mejores recetas caseras. Comparte tus creaciones culinarias en posts deliciosamente detallados, añade fotos tentadoras y califica la dificultad para cocineras de todos los niveles. Únete a nuestra comunidad gastronómica y encuentra inspiración en cada bocado. ¿Listas para comenzar a compartir tus secretos en la cocina?';
   const buttonLogin = document.createElement('button');
@@ -36,24 +40,35 @@ function home(navigateTo) {
     navigateTo('/login');
   });
 
-  buttonGoogle.addEventListener('click', () => {
-    // e.preventDefault();
+  buttonGoogle.addEventListener('click', async (e) => {
+    e.preventDefault();
     // Before
     // ==============
-    // signInWithRedirect(auth, new GoogleAuthProvider()).t
-    // After the page redirects back
-    // const userCred = await getRedirectResult(auth);
-    // console.log(userCred);
+    
     // signInWithRedirect(auth, provider)
     //   .then(() => {
     //     getRedirectResult(auth)
     //       .then((result) => { console.log(result.user); });
     //   });
-    entrarPrueba().then((res) => {
-      console.log(res);
-      navigateTo('/welcome');
-    }).catch((err) => { console.log(err.message); });
-    navigateTo('/welcome')
+    // entrarPrueba().then((res) => {
+    //   debugger
+
+    //   console.log(res);
+    //   navigateTo('/welcome');
+    // }).catch((err) => { console.log(err.message); });
+    // navigateTo('/welcome')
+
+    try {
+      debugger;
+      const provider = new GoogleAuthProvider();
+      console.log(await getUserName())
+      await signInWithRedirect(auth, provider);
+      
+    } catch (error) {
+        console.log("error", error)
+        navigateTo('/error');
+      
+    }
   });
 
   buttonRegister.addEventListener('click', () => {
