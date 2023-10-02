@@ -2,10 +2,10 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  // signInWithRedirect,
-  signOut,
-  getRedirectResult,
+  // GoogleAuthProvider,
+  // // signInWithRedirect,
+  // signOut,
+  // getRedirectResult,
 } from 'firebase/auth';
 
 import { auth } from '../firebaseconfig';
@@ -132,21 +132,21 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
 // const credential = GoogleAuthProvider.credentialFromError(error);
 // ...
 // });
-export const entrarPrueba = async () => {
-  debugger
-  
-  // await signInWithRedirect(auth, provider);
-  const result = await getRedirectResult(auth);
-  if (result) {
-    debugger;
-    // This is the signed-in user
-    const user = result.user;
-    // This gives you a Facebook Access Token.
-    const credential = provider.credentialFromResult(auth, result);
-    const token = credential.accessToken;
-    console.log("user", user)
-    console.log("token", token)
-  }
-};
+// export const entrarPrueba = async () => {
+//   debugger
 
-export const exitFn = () => signOut(auth);
+//   // await signInWithRedirect(auth, provider);
+//   const result = await getRedirectResult(auth);
+//   if (result) {
+//     debugger;
+//     // This is the signed-in user
+//     const user = result.user;
+//     // This gives you a Facebook Access Token.
+//     const credential = provider.credentialFromResult(auth, result);
+//     const token = credential.accessToken;
+//     console.log("user", user)
+//     console.log("token", token)
+//   }
+// };
+
+// export const exitFn = () => signOut(auth);
