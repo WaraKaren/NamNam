@@ -1,4 +1,5 @@
 import { exitFn } from './utils.js';
+
 const welcome = (navigateTo) => {
   const section = document.createElement('section');
   section.className = 'containerWelcome';
@@ -30,7 +31,7 @@ const welcome = (navigateTo) => {
 
   buttonHome.addEventListener('click', () => navigateTo('/'));
 
-  section.append(divOne, divTwo);
+  section.append(divOne);
   divOne.append(logo, mensajeWelcome, titleWelcome, buttonHome, buttonExit);
 
   return section;
