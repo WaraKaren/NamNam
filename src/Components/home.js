@@ -1,4 +1,5 @@
 // file home.js
+import { entrarPrueba } from './utils.js';
 function home(navigateTo) {
   const section = document.createElement('section');
   section.className = 'containerHome';
@@ -14,9 +15,11 @@ function home(navigateTo) {
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'bttnLoginHome';
   buttonLogin.textContent = 'Inicia sesión';
-  const buttonGoogle = document.createElement('button');
-  buttonGoogle.className = 'bttnGoogleHome';
-  buttonGoogle.textContent = 'Inicia sesión con Google';
+  const buttonGoogle = document.createElement('img');
+  buttonGoogle.className = 'buttonGoogle';
+  buttonGoogle.id = 'buttonGoogle';
+  buttonGoogle.src = 'imagenes/btn_google_signin_light_normal_web@2x.png';
+  buttonGoogle.alt = 'imagen botón Google';
   const buttonRegister = document.createElement('button');
   buttonRegister.className = 'bttnRegisterHome';
   buttonRegister.textContent = 'Regístrate';
@@ -25,9 +28,14 @@ function home(navigateTo) {
     navigateTo('/login');
   });
 
-  /*  buttonGoogle.addEventListener('click', () => {
+  buttonGoogle.addEventListener('click', () => {
     navigateTo('/google');
-  }); */
+    entrarPrueba().then((res) => {
+      console.log(res);
+      navigateTo('/welcome');
+    }).catch((err) => { console.log(err.message); });
+    navigateTo('/welcome');
+  });
 
   buttonRegister.addEventListener('click', () => {
     navigateTo('/register');

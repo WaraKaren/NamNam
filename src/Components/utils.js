@@ -1,5 +1,12 @@
 // eslint-disable-next-line max-len
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  signOut,
+  // getRedirectResult,
+} from 'firebase/auth';
 import { auth } from '../firebaseconfig';
 
 export const createUserWithEmail = (email, password, navigateTo) => new Promise(() => {
@@ -97,3 +104,10 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
       }
     });
 });
+
+export const entrarPrueba = () => {
+  const provider = new GoogleAuthProvider();
+  return signInWithRedirect(auth, provider);
+};
+
+export const exitFn = () => signOut(auth);
