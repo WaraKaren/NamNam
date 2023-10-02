@@ -1,3 +1,10 @@
+// import {
+//   signInWithRedirect,
+//   // getRedirectResult,
+//   GoogleAuthProvider,
+// } from 'firebase/auth';
+// import { auth } from '../firebaseconfig';
+
 // file home.js
 import { entrarPrueba } from './utils.js';
 function home(navigateTo) {
@@ -9,9 +16,11 @@ function home(navigateTo) {
   logoHome.className = 'logoHome';
   logoHome.src = 'imagenes/logo.png';
   const title = document.createElement('h2');
+  // const user = getUserName();
   title.textContent = 'Bienvenida a Ñam Ñam';
+  title.id = 'userName';
   const titleTwo = document.createElement('h3');
-  titleTwo.textContent = 'Tu destino culinario en línea para compartir, descubrir y deleitarte con las mejores recetas caseras. Comparte tus creaciones culinarias en posts deliciosamente detallados, añade fotos tentadoras y califica la dificultad para cocineras de todos los niveles. Únete a nuestra comunidad gastronómica y encuentra inspiración en cada bocado. ¿Listas para comenzar a compartir tus secretos en la cocina?';
+  titleTwo.textContent = 'Únete a nuestra comunidad gastronómica y encuentra inspiración en cada bocado. ¿Listas para comenzar a compartir tus secretos en la cocina?';
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'bttnLoginHome';
   buttonLogin.textContent = 'Inicia sesión';
@@ -42,7 +51,7 @@ function home(navigateTo) {
   });
 
   section.append(divOne);
-  divOne.append(logoHome, title, titleTwo, buttonLogin, buttonGoogle, buttonRegister);
+  divOne.append(logoHome, title, titleTwo, buttonLogin, buttonRegister, buttonGoogle);
   return section;
 }
 

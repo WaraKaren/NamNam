@@ -24,9 +24,9 @@ function login(navigateTo) {
   inputPass.id = 'inputPassLogin';
   inputPass.placeholder = 'Escribe tu contraseña';
   inputPass.type = 'password';
-  const buttonForgotPass = document.createElement('button');
-  buttonForgotPass.className = 'bttnForgotPassLogin';
-  buttonForgotPass.textContent = '¿Olvidaste tu contraseña?';
+  // const buttonForgotPass = document.createElement('button');
+  // buttonForgotPass.className = 'bttnForgotPassLogin';
+  // buttonForgotPass.textContent = '¿Olvidaste tu contraseña?';
   const buttonLogin = document.createElement('button');
   buttonLogin.className = 'bttnLogin';
   buttonLogin.textContent = 'Iniciar sesión';
@@ -51,7 +51,7 @@ function login(navigateTo) {
   section.append(divOne, divTwo);
   divOne.append(logo, title);
   divTwo.append(form);
-  form.append(inputEmail, inputPass, buttonForgotPass, buttonLogin, buttonReturn);
+  form.append(inputEmail, inputPass, buttonLogin, buttonReturn);
 
   return section;
 }

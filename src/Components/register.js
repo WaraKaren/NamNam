@@ -2,7 +2,7 @@ import { createUserWithEmail } from './utils';
 
 const register = (navigateTo) => {
   const section = document.createElement('section');
-  section.className = 'sectionRegister';
+  section.className = 'containerRegister';
   const divOne = document.createElement('div');
   divOne.className = 'divOneRegister';
   const logo = document.createElement('img');
@@ -20,18 +20,22 @@ const register = (navigateTo) => {
   inputEmailRegister.placeholder = 'Escribe tu correo electrónico';
   inputEmailRegister.className = 'emailRegister';
   inputEmailRegister.id = 'emailRegister';
+  inputEmailRegister.type = 'email';
   const inputPassRegister = document.createElement('input');
   inputPassRegister.placeholder = 'Escribe tu contraseña';
   inputPassRegister.className = 'passwordRegister';
   inputPassRegister.id = 'passwordRegister';
+  inputPassRegister.type = 'password';
   const textPassword = document.createElement('p');
   textPassword.textContent = 'Debe contener mínimo 6 caracteres';
   textPassword.className = 'textPasswordRegister';
-  const inputConfirmPassRegister = document.createElement('input');
-  inputConfirmPassRegister.placeholder = 'Confirma tu contraseña';
+  // const inputConfirmPassRegister = document.createElement('input');
+  // inputConfirmPassRegister.placeholder = 'Confirma tu contraseña';
   const buttonWelcome = document.createElement('button');
+  buttonWelcome.className = 'btonRegister';
   buttonWelcome.textContent = 'Registrar';
   const buttonSubmitRegister = document.createElement('button');
+  buttonSubmitRegister.className = 'btonRegresar';
   buttonSubmitRegister.textContent = 'Volver';
 
   buttonWelcome.addEventListener('click', form.submit());
@@ -56,7 +60,7 @@ const register = (navigateTo) => {
     inputEmailRegister,
     inputPassRegister,
     textPassword,
-    inputConfirmPassRegister,
+    // inputConfirmPassRegister,
     buttonWelcome,
     buttonSubmitRegister,
   );
