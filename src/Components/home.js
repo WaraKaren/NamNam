@@ -1,6 +1,6 @@
 import {
   signInWithRedirect,
-  getRedirectResult,
+  // getRedirectResult,
   GoogleAuthProvider,
 } from 'firebase/auth';
 import { auth } from '../firebaseconfig';
@@ -8,8 +8,8 @@ import { auth } from '../firebaseconfig';
 // file home.js
 
 const getUserName = () => {
-  const username = (auth?.currentUser?.displayName) || ""
-  return `Bienvenida ${username}` 
+  const username = (auth?.currentUser?.displayName) || "";
+  return `Bienvenida ${username}`;
 };
 function home(navigateTo) {
   const section = document.createElement('section');
