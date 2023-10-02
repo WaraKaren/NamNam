@@ -1,17 +1,27 @@
 // eslint-disable-next-line max-len
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithRedirect,
+  signOut,
+  // getRedirectResult,
+} from 'firebase/auth';
+
 import { auth } from '../firebaseconfig';
 
 export const createUserWithEmail = (email, password, navigateTo) => new Promise(() => {
-// Ejecutor (el código productor, "cantante")
+  // Ejecutor (el código productor, "cantante")
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => { // => respuesta positiva
+    .then((userCredential) => {
+      // => respuesta positiva
       window.console.log('USERCredential', userCredential);
       // const user = userCredential.user;
       // console.log('USER', user);
       navigateTo('/welcome');
     })
-    .catch((error) => { // => respuesta negativa
+    .catch((error) => {
+      // => respuesta negativa
       const errorCode = error.code;
       // => 1XX = Informativo
       // 2XX = exitosa
@@ -26,7 +36,7 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
           alert('Este correo ya está en uso');
           break;
         case 'Firebase: Error (auth/passwords-not-match).':
-          alert('The passwords don\'t match');
+          alert("The passwords don't match");
           break;
         case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
           alert('La contraseña debe contener mínimo 6 caracteres');
@@ -46,14 +56,14 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
         case 'Firebase: Error (auth/cancelled-popup-request)':
           alert('The request was canceled');
           break;
-        // case 'Firebase: Error (auth/popup-blocked).':
-        //   alert('the popup was blocked');
-        //   break;
+          // case 'Firebase: Error (auth/popup-blocked).':
+          //   alert('the popup was blocked');
+          //   break;
         default:
           alert(errorCode);
       }
-    // modalError.styled = 'block';
-    // modaleError.
+      // modalError.styled = 'block';
+      // modaleError.
     });
 });
 
@@ -72,7 +82,7 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
           alert('Este correo ya está en uso');
           break;
         case 'Firebase: Error (auth/passwords-not-match).':
-          alert('The passwords don\'t match');
+          alert("The passwords don't match");
           break;
         case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
           alert('La contraseña debe contener mínimo 6 caracteres');
@@ -97,3 +107,34 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
       }
     });
 });
+
+// getRedirectResult(auth)
+// .then((result) => {
+//   navigateTo('/welcome');
+//   // This gives you a Google Access Token. You can use it to access Google APIs.
+//   const credential = GoogleAuthProvider.credentialFromResult(result);
+//   console.log('CREDENTIAL', credential);
+//   const token = credential.accessToken;
+//   console.log('TOKEN', token);
+//   // // The signed-in user info.
+//   const user = result.user;
+//   console.log('USER', user);
+// // IdP data available using getAdditionalUserInfo(result)
+// // ...
+// }).catch((error) => {
+//   console.log(error);
+// Handle Errors here.
+// const errorCode = error.code;
+// const errorMessage = error.message;
+// // The email of the user's account used.
+// const email = error.customData.email;
+// // The AuthCredential type that was used.
+// const credential = GoogleAuthProvider.credentialFromError(error);
+// ...
+// });
+export const entrarPrueba = () => {
+  const provider = new GoogleAuthProvider();
+  return signInWithRedirect(auth, provider);
+};
+
+export const exitFn = () => signOut(auth);

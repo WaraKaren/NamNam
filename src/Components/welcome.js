@@ -1,3 +1,5 @@
+import { exitFn } from './utils.js';
+
 const welcome = (navigateTo) => {
   const section = document.createElement('section');
   section.className = 'containerWelcome';
@@ -17,11 +19,19 @@ const welcome = (navigateTo) => {
   const buttonHome = document.createElement('button');
   buttonHome.className = 'buttonHomeWelcome';
   buttonHome.textContent = 'Siguiente';
+  const buttonExit = document.createElement('button');
+  buttonExit.className = 'bttnExitHome';
+  buttonExit.textContent = 'Exit';
+  buttonExit.addEventListener('click', () => {
+    exitFn().then(() => {
+      navigateTo('/');
+    });
+  });
 
   buttonHome.addEventListener('click', () => navigateTo('/'));
 
   section.append(divOne, divTwo);
-  divOne.append(logo, mensajeWelcome, titleWelcome, buttonHome);
+  divOne.append(logo, mensajeWelcome, titleWelcome, buttonHome, buttonExit);
 
   return section;
 };

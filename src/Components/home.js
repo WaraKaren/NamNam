@@ -1,4 +1,14 @@
+// import {
+//   signInWithRedirect,
+//   getRedirectResult,
+//   GoogleAuthProvider,
+// } from 'firebase/auth';
+// // import { provider } from './utils.js';
+// import { auth } from '../firebaseconfig';
+
 // file home.js
+import { entrarPrueba } from './utils.js';
+
 function home(navigateTo) {
   const section = document.createElement('section');
   section.className = 'containerHome';
@@ -15,7 +25,8 @@ function home(navigateTo) {
   buttonLogin.className = 'bttnLoginHome';
   buttonLogin.textContent = 'Inicia sesión';
   const buttonGoogle = document.createElement('button');
-  buttonGoogle.className = 'bttnGoogleHome';
+  buttonGoogle.className = 'buttonGoogle';
+  buttonGoogle.id = 'buttonGoogle';
   buttonGoogle.textContent = 'Inicia sesión con Google';
   const buttonRegister = document.createElement('button');
   buttonRegister.className = 'bttnRegisterHome';
@@ -25,9 +36,25 @@ function home(navigateTo) {
     navigateTo('/login');
   });
 
-  /*  buttonGoogle.addEventListener('click', () => {
-    navigateTo('/google');
-  }); */
+  buttonGoogle.addEventListener('click', () => {
+    // e.preventDefault();
+    // Before
+    // ==============
+    // signInWithRedirect(auth, new GoogleAuthProvider()).t
+    // After the page redirects back
+    // const userCred = await getRedirectResult(auth);
+    // console.log(userCred);
+    // signInWithRedirect(auth, provider)
+    //   .then(() => {
+    //     getRedirectResult(auth)
+    //       .then((result) => { console.log(result.user); });
+    //   });
+    entrarPrueba().then((res) => {
+      console.log(res);
+      navigateTo('/welcome');
+    }).catch((err) => { console.log(err.message); });
+    navigateTo('/welcome')
+  });
 
   buttonRegister.addEventListener('click', () => {
     navigateTo('/register');
