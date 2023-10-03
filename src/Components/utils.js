@@ -20,6 +20,14 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
       navigateTo('/welcome');
     })
     .catch((error) => {
+      const sectionModal = document.createElement('section');
+      sectionModal.id = 'sectionModal';
+      const modal = document.createElement('dialog');
+      modal.className = 'modal';
+      const botonModal = document.createElement('button');
+      botonModal.id = 'botonModal';
+      botonModal.textContent = 'X';
+
       // => respuesta negativa
       const errorCode = error.code;
       // => 1XX = Informativo
@@ -28,41 +36,49 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
       // 4XX = error de cliente
       // 5XX = error del servidor
       const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
+      window.console.log(errorCode, errorMessage);
       // nos muestra el error que tiene el usuario en la consola
       switch (errorMessage) {
         case 'Firebase: Error (auth/email-already-in-use).':
-          alert('Este correo ya está en uso');
+          modal.innerHTML = 'Este correo ya está en uso';
           break;
         case 'Firebase: Error (auth/passwords-not-match).':
-          alert("The passwords don't match");
+          modal.innerHTML = 'Las contraseñas no coinciden';
           break;
         case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
-          alert('La contraseña debe contener mínimo 6 caracteres');
+          modal.innerHTML = 'La contraseña debe contener mínimo 6 caracteres';
           break;
         case 'Firebase: Error (auth/invalid-email).':
-          alert('Correo inválido');
+          modal.innerHTML = 'Correo inválido';
           break;
         case 'Firebase: Error (auth/user-not-found).':
-          alert('User not found');
+          modal.innerHTML = 'Usuaria(o) no encontrada(o)';
           break;
         case 'Firebase: error (auth/wrong-password).':
-          alert('Wrong password');
+          modal.innerHTML = 'Contraseña incorrecta';
           break;
         case 'Firebase: Error (auth/too-many-requests).':
-          alert('Too many requests. Try again later');
+          modal.innerHTML = 'Demasiadas solicitudes. Inténtalo más tarde';
           break;
         case 'Firebase: Error (auth/cancelled-popup-request)':
-          alert('The request was canceled');
+          modal.innerHTML = 'La petición fue cancelada';
           break;
           // case 'Firebase: Error (auth/popup-blocked).':
           //   alert('the popup was blocked');
           //   break;
         default:
-          alert(errorCode);
+          modal.innerHTML = errorCode;
       }
       // modalError.styled = 'block';
       // modaleError.
+      modal.appendChild(botonModal);
+      sectionModal.appendChild(modal);
+      botonModal.addEventListener('click', () => {
+        modal.close();
+      });
+
+      document.body.appendChild(sectionModal);
+      modal.showModal();
     });
 });
 
@@ -74,36 +90,42 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
       // const user = userCredential.user;
     })
     .catch((error) => {
+      const sectionModal = document.createElement('section');
+      sectionModal.id = 'sectionModal';
+      const modal = document.createElement('dialog');
+      modal.className = 'modal';
+      const botonModal = document.createElement('button');
+      botonModal.id = 'botonModal';
+      botonModal.textContent = 'X';
       const errorCode = error.code;
       const errorMessage = error.message;
       switch (errorMessage) {
-        case 'Firebase: Error (auth/email-already-in-use).':
-          alert('Este correo ya está en uso');
-          break;
-        case 'Firebase: Error (auth/passwords-not-match).':
-          alert("The passwords don't match");
-          break;
-        case 'Firebase: Password should be at least 6 characters (auth/weak-password).':
-          alert('La contraseña debe contener mínimo 6 caracteres');
-          break;
         case 'Firebase: Error (auth/invalid-email).':
-          alert('Correo inválido');
+          modal.innerHTML = 'Correo inválido';
           break;
         case 'Firebase: Error (auth/user-not-found).':
-          alert('User not found');
+          modal.innerHTML = 'Usuaria(o) no encontrada(o)';
           break;
         case 'Firebase: error (auth/wrong-password).':
-          alert('Wrong password');
+          modal.innerHTML = 'Contraseña incorrecta';
           break;
         case 'Firebase: Error (auth/too-many-requests).':
-          alert('Too many requests. Try again later');
+          modal.innerHTML = 'Demasiadas solicitudes. Inténtalo más tarde';
           break;
         case 'Firebase: Error (auth/cancelled-popup-request)':
-          alert('The request was canceld');
+          modal.innerHTML = 'La petición fue cancelada';
           break;
         default:
-          alert(errorCode);
+          modal.innerHTML = errorCode;
       }
+      modal.appendChild(botonModal);
+      sectionModal.appendChild(modal);
+      botonModal.addEventListener('click', () => {
+        modal.close();
+      });
+
+      document.body.appendChild(sectionModal);
+      modal.showModal();
     });
 });
 
