@@ -26,7 +26,7 @@ const routes = [
 const defaultRoute = '/';
 const root = document.getElementById('root');
 
-function navigateTo(hash) {
+export function navigateTo(hash) {
   // primera carga si vengo de redireccióm
   // const userCred = await getRedirectResult(auth);
   // console.log("usercred", userCred)

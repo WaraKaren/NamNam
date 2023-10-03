@@ -7,6 +7,7 @@
 
 // file home.js
 import { entrarPrueba } from './utils.js';
+
 function home(navigateTo) {
   const section = document.createElement('section');
   section.className = 'containerHome';
@@ -40,9 +41,9 @@ function home(navigateTo) {
   buttonGoogle.addEventListener('click', () => {
     navigateTo('/google');
     entrarPrueba().then((res) => {
-      console.log(res);
+      window.console.log(res);
       navigateTo('/welcome');
-    }).catch((err) => { console.log(err.message); });
+    }).catch((err) => { window.console.log(err.message); });
     navigateTo('/welcome');
   });
 
