@@ -1,1 +1,0 @@
-Lo que les puede servir es guardar el uid en la data del post para que cuando se inicie sesión, el uid del usuario se compare con cada post. "SI el UID del post es igual que el UID del Usuario, hay que mostrar ese post"
