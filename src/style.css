@@ -1,5 +1,8 @@
 body {
-    background: #D9D9D9;
+    background-image: url(imagenes/background-img-1.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,15 +15,10 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* img {
-    width: 12em;
-    height: auto;
-    object-fit: cover;
-} */
-
 button {
     display: block;
     background: #A9CA8F;
+    border-color: #D9D9D9;
     border-radius: 10px;
     cursor: pointer;
     width: 12em;
@@ -36,13 +34,286 @@ input {
     padding: 1%;
     margin: 1em;
     text-align: left;
+    border: 2px solid #f2ad94;
+    border-radius: 4px;
+}
+
+.modal {
+    width: 16em;
+    height: 3.5em;
+    padding: 1px;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+    border: 2px solid #f2ad94;
+    border-radius: 4px;
+}
+
+#botonModal {
+    width: 1.7em;
+    height: 1.7em;
+    padding: 1px;
+    margin: 0.3em 1em 0em 7em;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.divOneHome {
+    background: #D9D9D9;
+    width: 32em;
+    height: 37em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoHome {
+    margin: 1em 0.5em 0em 0.5em;
+    width: 18em;
+    height: auto;
+    object-fit: cover;
+}
+
+h2{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bolder;
+    margin: 1em 0.5em 0.2em 0.5em;
+}
+
+h3{
+    text-align: center;
+    font-size: 1em;
+    font-style: italic;
+    margin: 1em 3em 0em 3em;
+}
+
+.bttnLoginHome {
+    width: 10em;
+    height: 2.5em;
+    padding: 1%;
+    margin: 2em 1em 0.5em 1em;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.bttnRegisterHome{
+    width: 10em;
+    height: 2.5em;
+    padding: 1%;
+    margin: 0.5em 1em 0.5em 1em;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.buttonGoogle{
+    width: 10em;
+    height: 2.3em;
+    padding: 0;
+    margin: 0.5em 1em 0.5em 1em;
+    cursor: pointer;
+}
+
+.divOneLogin {
+    background: #D9D9D9;
+    width: 32em;
+    height: 37em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoLogin {
+    margin: 0em 0.5em 0em 0.5em;
+    width: 18em;
+    height: auto;
+    object-fit: cover;
+}
+
+h1{
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bolder;
+    margin: 1.5em 0.5em 1em 0.5em;
+}
+
+.inputEmailLogin {
+    margin: 1em 1em 0.5em 1em;
+    padding: 1%;
+    font-size: medium;
+    font-weight: normal;
+}
+
+.inputPassLogin {
+    margin: 1em 1em 1.5em 1em;
+    padding: 1%;
+    font-size: medium;
+    font-weight: normal;
+}
+
+.bttnLogin{
+    width: 10em;
+    height: 2.5em;
+    padding: 1%;
+    margin: 0.5em 0em 0.8em 4em;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.bttnReturnLogin{
+    width: 10em;
+    height: 2.5em;
+    padding: 1%;
+    margin: 0.5em 0em 0.5em 4em;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.divOneRegister {
+    background: #D9D9D9;
+    width: 32em;
+    height: 37em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoRegister {
+    margin: 1em 0.5em 0em 0.5em;
+    width: 18em;
+    height: auto;
+    object-fit: cover;
+}
+
+h1{
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bolder;
+    margin: 1em 0.5em 2em 0.5em;
+}
+
+.emailRegister {
+    margin: 1em 1em 0.5em 1.5em;
+    padding: 1%;
+    font-size: medium;
+    font-weight: normal;
+}
+
+.passwordRegister {
+    margin: 1em 1em 0.5em 1.5em;
+    padding: 1%;
+    font-size: medium;
+    font-weight: normal;
+}
+
+.textPasswordRegister {
+    text-align: center;
+    font-size: 0.7em;
+    font-weight: bold;
+    font-style: italic;
+    margin: 0.5em 1em 1.5em 1em;
+}
+
+.btonRegister{
+    width: 10em;
+    height: 2.5em;
+    padding: 1%;
+    margin: 1.5em 0em 0.8em 4em;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.btonRegresar{
+    width: 10em;
+    height: 2.5em;
+    padding: 1%;
+    margin: 0.5em 0em 0.5em 4em;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.divOneWelcome {
+    background: #D9D9D9;
+    width: 32em;
+    height: 37em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoWelcome {
+    margin: 1em 0.5em 0em 0.5em;
+    width: 18em;
+    height: auto;
+    object-fit: cover;
+}
+
+h1{
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bolder;
+    margin: 1em 0.5em 0.2em 0.5em;
+}
+
+h2{
+    text-align: center;
+    font-size: 1.1em;
+    font-style: italic;
+    margin: 1em 3em 0em 3em;
+}
+
+p {
+    text-align: center;
+    font-size: 1em;
+    font-style: italic;
+    margin: 1em 1em 0em 1em;
+}
+
+.buttonHomeWelcome {
+    width: 10em;
+    height: 2.5em;
+    padding: 1%;
+    margin: 2em 1em 0.5em 1em;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.bttnExitHome{
+    width: 10em;
+    height: 2.5em;
+    padding: 1%;
+    margin: 0.5em 1em 0.5em 1em;
+    font-size: medium;
+    font-weight: bold;
 }
 
 
-/*Esta sección corresponde a Login*/
-/*Esta sección corresponde a Register*/
-
-/*Esta sección corresponde a Welcome*/
+/*img {
+    width: 30em;
+    height: 23em;
+    object-fit: cover;
+} */
 
 /*Media query para tablet*/
 /*Media query para tablet
@@ -103,7 +374,6 @@ h3{
     height: 3em;
     padding: 1%;
     margin: 0.5em 1em 0.5em 1em;
-    border-color: #D9D9D9;
     font-size: medium;
     font-weight: bold;
 }
@@ -113,7 +383,6 @@ h3{
     height: 3em;
     padding: 1%;
     margin: 0.5em 1em 0.5em 1em;
-    border-color: #D9D9D9;
     font-size: medium;
     font-weight: bold;
 }
@@ -123,11 +392,6 @@ h3{
     height: 3.5em;
     padding: 0;
     margin: 0.5em 1em 0.5em 1em;
-    background-image: url('imagenes/Google.png');
-    background-size: contain;
-    background-color: #FFFFFF;
-    border: 1px solid transparent;
-    background-position: center center;
 }
 
  /*login*/
@@ -160,8 +424,6 @@ h1{
     padding: 1%;
     font-size: medium;
     font-weight: normal;
-    border: 2px solid #f2ad94;
-    border-radius: 4px;
 }
 
 .inputEmailLogin:focus {
@@ -174,8 +436,6 @@ h1{
     padding: 1%;
     font-size: medium;
     font-weight: normal;
-    border: 2px solid #f2ad94;
-    border-radius: 4px;
 }
 
 /* .bttnForgotPassLogin {
@@ -193,7 +453,6 @@ h1{
     height: 3em;
     padding: 1%;
     margin: 1em 1em 0.5em 3em;
-    border-color: #D9D9D9;
     font-size: medium;
     font-weight: bold;
 }
@@ -203,7 +462,6 @@ h1{
     height: 3em;
     padding: 1%;
     margin: 1em 1em 0.5em 3em;
-    border-color: #D9D9D9;
     font-size: medium;
     font-weight: bold;
 }
@@ -239,8 +497,6 @@ h1{
     padding: 1%;
     font-size: medium;
     font-weight: normal;
-    border: 2px solid #f2ad94;
-    border-radius: 4px;
 }
 
 .emailRegister:focus {
@@ -253,8 +509,6 @@ h1{
     padding: 1%;
     font-size: medium;
     font-weight: normal;
-    border: 2px solid #f2ad94;
-    border-radius: 4px;
 }
 
 .textPasswordRegister {
@@ -270,7 +524,6 @@ h1{
     height: 3em;
     padding: 1%;
     margin: 2em 1.9em 0em 3em;
-    border-color: #D9D9D9;
     font-size: medium;
     font-weight: bold;
 }
@@ -280,7 +533,6 @@ h1{
     height: 3em;
     padding: 1%;
     margin: 1em 1.5em 0.5em 3em;
-    border-color: #D9D9D9;
     font-size: medium;
     font-weight: bold;
 }
@@ -324,7 +576,6 @@ h1{
     height: 3em;
     padding: 1%;
     margin: 1em 3.2em 0.5em 3em;
-    border-color: #D9D9D9;
     font-size: medium;
     font-weight: bold;
 }
@@ -334,11 +585,29 @@ h1{
     height: 3em;
     padding: 1%;
     margin: 1em 3.2em 0.5em 3em;
-    border-color: #D9D9D9;
     font-size: medium;
     font-weight: bold;
 }
 
+.modal {
+    width: 16em;
+    height: 4em;
+    padding: 1%;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+    border: 2px solid #f2ad94;
+    border-radius: 4px;
 }
 
+#botonModal {
+    width: 1.7em;
+    height: 1.7em;
+    padding: 1%;
+    margin: 1em 1em 1em 7em;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+}
 
+}
