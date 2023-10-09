@@ -1,0 +1,97 @@
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
+import {
+  addDoc, updateDoc, deleteDoc,
+} from 'firebase/firestore';
+import { auth } from '../src/firebase.js';
+import {
+  updateUsername,
+  createUser,
+  userLogin,
+  userGoogleLogin,
+  getLoggedUser,
+  userLogout,
+  createPost,
+  editPost,
+  deletePost,
+  addLike,
+  removeLike,
+} from '../src/utils.js';
+jest.mock('firebase/auth');
+jest.mock('firebase/firestore');
+jest.mock('../src/firebase.js', () => ({
+  auth: {
+    currentUser: {
+      displayName: 'Test User',
+      email: 'test@example.com',
+    },
+    updateProfile: jest.fn(),
+    createUserWithEmailAndPassword: jest.fn(),
+    signInWithEmailAndPassword: jest.fn(),
+    signInWithPopup: jest.fn(),
+    signOut: jest.fn(),
+    getIdToken: jest.fn(),
+  },
+  db: {
+    collection: jest.fn().mockReturnThis(),
+    addDoc: jest.fn(),
+    updateDoc: jest.fn(),
+    deleteDoc: jest.fn(),
+    doc: jest.fn(),
+  },
+}));
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+describe('updateUsername', () => {
+  it('should be a function', () => {
+    expect(typeof updateUsername).toBe('function');
+  });
+  it('should call updateProfile()', async () => {
+    const updateProfileMock = jest.fn().mockResolvedValue();
+    updateProfile.mockImplementationOnce(updateProfileMock);
+    await updateUsername('myNewName', '');
+    expect(updateProfileMock).toHaveBeenCalled();
+  });
+  it('should throw an error', async () => {
+    const updateProfileMock = jest.fn(() => Promise.reject(new Error('Mock error')));
+    updateProfile.mockImplementation(updateProfileMock);
+    await expect(updateUsername('myNewName', '')).rejects.toThrowError('Mock error');
+  });
+});
+-------------------------------------------------------------------
+
+describe('userLogin', () => {
+  it('should be a function', () => {
+    expect(typeof userLogin).toBe('function');
+  });
+  it('should call signInWithEmailAndPassword()', async () => {
+    await userLogin('myEmail@mail.com', 'password');
+    expect(signInWithEmailAndPassword).toHaveBeenCalled();
+  });
+  it('should return an object', async () => {
+    signInWithEmailAndPassword.mockReturnValueOnce({
+      user: { email: 'myEmail@mail.com' },
+    });
+    const response = await userLogin('myEmail@mail.com', 'password');
+    expect(response.user.email).toBe('myEmail@mail.com');
+  });
+});
+
+--------------------------------------------------------------------
+Post
+- hacer test pero sin tener en cuenta el 70%
+- crear el post
+editar y likes, elijan uno
+
+
+
+
+
+
+
