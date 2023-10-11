@@ -62,7 +62,7 @@ input {
 .divOneHome {
     background: #D9D9D9;
     width: 32em;
-    height: 37em;
+    height: 33em;
     border-color: #A9CA8F;
     border-style: double;
     border-radius: 10px;
@@ -123,7 +123,7 @@ h3{
 .divOneLogin {
     background: #D9D9D9;
     width: 32em;
-    height: 37em;
+    height: 33em;
     border-color: #A9CA8F;
     border-style: double;
     border-radius: 10px;
@@ -336,6 +336,20 @@ p {
 /*Media query para celular*/
 
 @media screen and (max-width:450px) {
+
+body {
+    background-image: url(imagenes/background-img-1.jpg);
+    background-position: center;
+    background-attachment: scroll;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 img {
     margin: 0em;
     width: 14em;
@@ -344,9 +358,17 @@ img {
 }
   /*Home*/
 .divOneHome {
+    background: #D9D9D9;
+    width: 18em;
+    height: 38em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .logoHome {
@@ -396,31 +418,34 @@ h3{
 
  /*login*/
 .divOneLogin {
+    background: #D9D9D9;
+    width: 18em;
+    height: 38em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-/* .logoLogin {
-    margin: 10px;
+.logoLogin {
+    margin: 1em 1.5em 4em 1.7em;
     width: 14em;
     height: auto;
     object-fit: cover;
-} */
-
-h1{
-    text-align: center;
-    font-size: 1.5em;
 }
 
-.divTwoLogin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h1{
+    margin: 0em 1em 2em 1em;
+    text-align: center;
+    font-size: 2em;
 }
 
 .inputEmailLogin {
-    margin: 1em 1em 0.5em 1em;
+    margin: 0em 1em 0.5em 1em;
     padding: 1%;
     font-size: medium;
     font-weight: normal;
@@ -468,9 +493,17 @@ h1{
     
     /*Register*/
 .divOneRegister {
+    background: #D9D9D9;
+    width: 18em;
+    height: 38em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .logoRegister {
@@ -539,11 +572,17 @@ h1{
 
 /*Welcome*/
 .divOneWelcome {
+    background: #D9D9D9;
+    width: 18em;
+    height: 38em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 0;
-    margin-top: 0;
+    justify-content: center;
 }
 
 .logoWelcome {
