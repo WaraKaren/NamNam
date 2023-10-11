@@ -4,8 +4,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithRedirect,
   signOut,
+  signInWithPopup,
   // getRedirectResult,
 } from 'firebase/auth';
 // Importar el objeto 'auth' desde un archivo 'firebaseconfig'
@@ -32,14 +32,14 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
       botonModal.textContent = 'X';
 
       // Obtener el código y mensaje de error
-      const errorCode = error.code;
+      // const errorCode = error.code;
       // => 1XX = Informativo
       // 2XX = exitosa
       // 3XX = exitosa pero redirect
       // 4XX = error de cliente
       // 5XX = error del servidor
       const errorMessage = error.message;
-      window.console.log(errorCode, errorMessage);
+      window.console.log(errorMessage);
       // Usar un switch para determinar el mensaje de error apropiado que aparece en la consola
       switch (errorMessage) {
         case 'Firebase: Error (auth/email-already-in-use).':
@@ -71,7 +71,7 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
           //   break;
         default:
           // Si el error no coincide con ninguno de los casos anteriores, mostrar el código de error
-          modal.innerHTML = errorCode;
+          modal.innerHTML = 'Error al registrarse';
       }
       // modalError.styled = 'block';
       // modaleError.
@@ -104,7 +104,7 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
       const botonModal = document.createElement('button');
       botonModal.id = 'botonModal';
       botonModal.textContent = 'X';
-      const errorCode = error.code;
+      // const errorCode = error.code;
       const errorMessage = error.message;
       switch (errorMessage) {
         case 'Firebase: Error (auth/email-already-in-use).':
@@ -135,7 +135,7 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
           //   alert('the popup was blocked');
           //   break;
         default:
-          modal.innerHTML = errorCode;
+          modal.innerHTML = 'Error al iniciar sesión';
       }
       modal.appendChild(botonModal);
       sectionModal.appendChild(modal);
@@ -147,10 +147,22 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
       modal.showModal();
     });
 });
+
 // Función para iniciar sesión con Google utilizando Firebase
-export const entrarPrueba = () => {
+export const entrarPrueba = (navigateTo) => {
   const provider = new GoogleAuthProvider();
-  return signInWithRedirect(auth, provider);
+  signInWithPopup(auth, provider).then((res) => {
+    window.console.log(res);
+    localStorage.setItem('user', true);
+    navigateTo('/feed');
+    // localStorage.setItem(key = con que nombre lo voy a guardar, value = que voy a guardar)
+    // localStorage.getItem(key = que quiero traer)
+    // localStorage.clear()
+  }).catch((err) => {
+    window.console.log(err.message);
+    navigateTo('/register');
+  });
 };
+
 // Función para cerrar la sesión del usuario
 export const exitFn = () => signOut(auth);

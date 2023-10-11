@@ -13,6 +13,7 @@ import login from './Components/login.js';
 import error from './Components/error.js';
 import register from './Components/register.js';
 import welcome from './Components/welcome.js';
+import feed from './Components/feed.js';
 
 // import { auth } from './firebaseconfig.js';
 // Definimos las rutas de la aplicación junto con los componentes asociados
@@ -22,6 +23,7 @@ const routes = [
   { path: '/error', component: error },
   { path: '/register', component: register },
   { path: '/welcome', component: welcome },
+  { path: '/feed', component: feed },
 ];
 // Define la ruta predeterminada y obtén el elemento 'root' del documento HTML.
 const defaultRoute = '/';

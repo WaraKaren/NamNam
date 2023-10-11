@@ -2,6 +2,9 @@
 import { exitFn } from './utils.js';
 // Definimos una función llamada 'welcome' que toma un argumento 'navigateTo'
 const welcome = (navigateTo) => {
+  if (!localStorage.getItem('user')) {
+    return navigateTo('/');
+  }
   // Creamos una sección en el DOM y le asignamos una clase CSS
   const section = document.createElement('section');
   section.className = 'containerWelcome';
@@ -33,7 +36,7 @@ const welcome = (navigateTo) => {
   });
   // Agregamos un evento de clic al botón 'Siguiente' para navegar a la ruta raíz
   buttonHome.addEventListener('click', () => navigateTo('/'));
-// Agrega los elementos al DOM en la estructura deseada
+  // Agrega los elementos al DOM en la estructura deseada
   section.append(divOne);
   divOne.append(
     logo,
