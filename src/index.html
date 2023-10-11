@@ -15,10 +15,13 @@
 </head>
 <body>
  <div id="root"></div> <!-- Un div con el ID "root" donde se insertará contenido dinámico -->
- <!-- Inclusión de dos scripts JavaScript externos, que se cargarán y ejecutarán en orden --> 
- <script type="module" src="main.js"></script> <!-- Se carga el script principal "main.js" -->
-  <script type="module" src="firebaseconfig.js"></script> <!-- Se carga el script de configuración de Firebase "firebaseconfig.js" -->
- <!--  <script type="module" src="error.js"></script>
+<!-- Inclusión de dos scripts JavaScript externos, que se cargarán y ejecutarán en orden -->
+<script type="module" src="main.js"></script> <!-- Se carga el script principal "main.js" -->
+<script type="module" src="firebaseconfig.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore-compat.js"></script>
+  <!-- Se carga el script de configuración de Firebase "firebaseconfig.js" -->
+  <!--  <script type="module" src="error.js"></script>
   <script type="module" src="home.js"></script>
   <script type="module" src="login.js"></script>
   <script type="module" src="register.js"></script>

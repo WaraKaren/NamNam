@@ -1,7 +1,17 @@
-/* eslint-disable max-len */
-/* eslint-disable no-console */
 // Importamos las funciones necesarias desde Firebase
 import { initializeApp } from 'firebase/app';
+import { getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  query,
+  onSnapshot,
+  deleteDoc,
+  doc, 
+  getDoc,
+} from 'firebase/firestore';
+
 import {
   getAuth,
   // GoogleAuthProvider,
@@ -22,3 +32,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+
+// Initialize Cloud Firestore and get a reference to the service
+export const db = getFirestore(app);
+// export const db = firebase.firestore();
+export const saveData = (title, description) => {
+  addDoc(collection(db, 'post'), { title, description });
+};
+
+export const getData = () => getDocs(collection(db, 'post'));
+export const onGetPost = (callback) => onSnapshot(collection(db, 'post'), callback);
+
+export const deletePost = (id) => deleteDoc(doc(db, 'post', id));
+
+export const editPost = (id) => getDoc(doc(db, 'post', id));
+
+// export const getData = (functionCallback) => {
+//   const consulta = query(collection(db, 'post'));
+//   onSnapshot(consulta, functionCallback);
+// };
