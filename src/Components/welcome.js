@@ -33,7 +33,7 @@ const welcome = (navigateTo) => {
   });
   // Agregamos un evento de clic al botón 'Siguiente' para navegar a la ruta raíz
   buttonHome.addEventListener('click', () => navigateTo('/'));
-// Agrega los elementos al DOM en la estructura deseada
+  // Agrega los elementos al DOM en la estructura deseada
   section.append(divOne);
   divOne.append(
     logo,
