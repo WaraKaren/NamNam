@@ -48,12 +48,7 @@ function home(navigateTo) {
   // Configuramos un evento de clic en el botón de Google para navegar a '/google'
   // Llamamos a la función 'entrarPrueba' y navegamos a '/welcome' después de una acción asincrónica
   buttonGoogle.addEventListener('click', () => {
-    navigateTo('/google');
-    entrarPrueba().then((res) => {
-      window.console.log(res);
-      navigateTo('/welcome');
-    }).catch((err) => { window.console.log(err.message); });
-    navigateTo('/welcome');
+    entrarPrueba(navigateTo);
   });
   // Configuramos un evento de clic en el botón "Regístrate" para navegar a '/register'
   buttonRegister.addEventListener('click', () => {

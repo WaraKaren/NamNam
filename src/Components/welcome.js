@@ -2,6 +2,9 @@
 import { exitFn } from './utils.js';
 // Definimos una función llamada 'welcome' que toma un argumento 'navigateTo'
 const welcome = (navigateTo) => {
+  if (!localStorage.getItem('user')) {
+    return navigateTo('/');
+  }
   // Creamos una sección en el DOM y le asignamos una clase CSS
   const section = document.createElement('section');
   section.className = 'containerWelcome';
