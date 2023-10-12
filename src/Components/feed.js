@@ -3,10 +3,16 @@
 // Required for side-effects
 import 'firebase/firestore';
 import {
-  saveData, getData, onGetPost, deletePost, editPost,
+  saveData, onGetPost, deletePost, editPost, updatePost,
 } from '../firebaseconfig.js';
+import { exitFn } from './utils.js';
 
-function feed() {
+// const welcome = (navigateTo) => {
+//   if (!localStorage.getItem('user')) {
+//     return navigateTo('/');
+//   }
+
+function feed(navigateTo) {
   const main = document.createElement('main');
   main.className = 'mainFeed';
   const logoFeed = document.createElement('img');
@@ -48,6 +54,18 @@ function feed() {
   const sectionData = document.createElement('section');
   sectionData.className = 'sectionData';
   sectionData.id = 'sectionData';
+  let editStatus = false;
+  let id = '';
+
+  const buttonExit = document.createElement('button');
+  buttonExit.className = 'bttnExitHome';
+  buttonExit.textContent = 'Cerrar sesión';
+  // Agregamos un evento de clic al botón 'Cerrar sesión' para salir y navegar a la ruta raíz
+  buttonExit.addEventListener('click', () => {
+    exitFn().then(() => {
+      navigateTo('/');
+    });
+  });
   // const recipePost = document.createElement('input');
   // recipePost.id = 'recipeTitle';
   // recipePost.className = 'recipeTitle';
@@ -61,17 +79,17 @@ function feed() {
   // LikeOn.src = 'imagenes/dona-glaseada.png';
   // LikeOn.alt = 'LikeOn';
   window.addEventListener('DOMContentLoaded', async () => {
-  // getData((resultado) => {
-  //   console.log(resultado);
-  //   let data = '';
-  //   resultado.forEach((doc) => {
-  //     const prueba = doc.data();
-  //     data += inputPost + prueba.title;
-  //   });
-  //   sectionData.innerHTML = data;
-  // });
+    // getData((resultado) => {
+    //   console.log(resultado);
+    //   let data = '';
+    //   resultado.forEach((doc) => {
+    //     const prueba = doc.data();
+    //     data += inputPost + prueba.title;
+    //   });
+    //   sectionData.innerHTML = data;
+    // });
     onGetPost((querySnapshot) => {
-    // const querySnapshot = await getData();
+      // const querySnapshot = await getData();
       let html = '';
       querySnapshot.forEach((doc) => {
         const datas = doc.data();
@@ -81,6 +99,7 @@ function feed() {
     <p>${datas.description}</p>
     <button class='bton-delete' data-id= '${doc.id}'>Eliminar</button>
     <button class='bton-edit' data-id= '${doc.id}'>Editar</button>
+    <img class='imagenLike' src= ${datas.isliked ? 'imagenes/dona-glaseada.png' : 'imagenes/dona-sin-glasear.png'} data-id= '${doc.id}'>
     </section>
     `;
       });
@@ -98,24 +117,45 @@ function feed() {
           const infoPost = doc.data();
           recipeForm.recipeTitle.value = infoPost.title;
           recipeForm.inputFeed.value = infoPost.description;
+          editStatus = true;
+          id = e.target.dataset.id;
+          recipeForm.btonSubmit.innerHTML = 'Editar';
+        });
+      });
+      const botonLike = sectionData.querySelectorAll('.imagenLike');
+      botonLike.forEach((bton) => {
+        bton.addEventListener('click', async (e) => {
+          const doc = await editPost(e.target.dataset.id);
+          const infoPost = doc.data();
+          updatePost(e.target.dataset.id, { ...infoPost, isliked: !infoPost.isliked });
         });
       });
     });
   });
 
-  recipeForm.addEventListener('submit', async (e) => {
+  recipeForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     /*  const title = recipeForm['.recipeTitle'];
     const description = recipeForm['.inputFeed']; */
-    saveData(recipeTitle.value, inputFeed.value);
+    // saveData(recipeTitle.value, inputFeed.value);
+    if (!editStatus) {
+      saveData(recipeTitle.value, inputFeed.value);
+    } else {
+      updatePost(id, {
+        title: recipeTitle.value,
+        description: inputFeed.value,
+      });
+
+      editStatus = false;
+    }
     recipeForm.reset();
     // console.log('VALOR', title, 'OTRO', description);
     // console.log('VALOR', e.target.recipeTitle.value);
     // await saveData(title, description);
   });
 
-  main.append(logoFeed, titleÑamÑam, userName, recipeForm, sectionData);
+  main.append(logoFeed, titleÑamÑam, userName, recipeForm, sectionData, buttonExit);
   recipeForm.append(fieldsetInput);
   fieldsetInput.append(postLegend, sectionInput, sectionTextarea, btonSubmit);
   sectionInput.appendChild(recipeTitle);

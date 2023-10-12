@@ -12,13 +12,16 @@ import {
 import { auth } from '../firebaseconfig';
 // Función para registrar un usuario con correo y contraseña
 export const createUserWithEmail = (email, password, navigateTo) => new Promise(() => {
+
   // Llamar a la función createUserWithEmailAndPassword con el objeto 'auth', email y contraseña
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Registro exitoso, mostrar mensaje en la consola y redirigir al usuario
       window.console.log('USERCredential', userCredential);
+      localStorage.setItem('user', true);
+
       // const user = userCredential.user;
-      // console.log('USER', user);
+      // console.log('USER', user)
       navigateTo('/welcome');
     })
     .catch((error) => {
@@ -93,7 +96,7 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
     .then((userCredential) => {
       // Inicio de sesión exitoso, mostrar mensaje en la consola y redirigir al usuario
       window.console.log('USERCredential', userCredential);
-      navigateTo('/welcome');
+      navigateTo('/feed');
       // const user = userCredential.user;
     })
     .catch((error) => {

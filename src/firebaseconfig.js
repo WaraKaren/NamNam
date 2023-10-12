@@ -10,6 +10,7 @@ import { getFirestore,
   deleteDoc,
   doc, 
   getDoc,
+  updateDoc,
 } from 'firebase/firestore';
 
 import {
@@ -37,7 +38,7 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 // export const db = firebase.firestore();
 export const saveData = (title, description) => {
-  addDoc(collection(db, 'post'), { title, description });
+  addDoc(collection(db, 'post'), { title, description, isliked: false });
 };
 
 export const getData = () => getDocs(collection(db, 'post'));
@@ -47,6 +48,7 @@ export const deletePost = (id) => deleteDoc(doc(db, 'post', id));
 
 export const editPost = (id) => getDoc(doc(db, 'post', id));
 
+export const updatePost = (id, newPost) => updateDoc(doc(db, 'post', id), newPost);
 // export const getData = (functionCallback) => {
 //   const consulta = query(collection(db, 'post'));
 //   onSnapshot(consulta, functionCallback);

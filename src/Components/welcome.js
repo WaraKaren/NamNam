@@ -1,5 +1,5 @@
 // Importamos una función desde ./utils.js
-import { exitFn } from './utils.js';
+// import { exitFn } from './utils.js';
 // Definimos una función llamada 'welcome' que toma un argumento 'navigateTo'
 const welcome = (navigateTo) => {
   if (!localStorage.getItem('user')) {
@@ -25,17 +25,17 @@ const welcome = (navigateTo) => {
   const buttonHome = document.createElement('button');
   buttonHome.className = 'buttonHomeWelcome';
   buttonHome.textContent = 'Siguiente';
-  const buttonExit = document.createElement('button');
-  buttonExit.className = 'bttnExitHome';
-  buttonExit.textContent = 'Cerrar sesión';
-  // Agregamos un evento de clic al botón 'Cerrar sesión' para salir y navegar a la ruta raíz
-  buttonExit.addEventListener('click', () => {
-    exitFn().then(() => {
-      navigateTo('/');
-    });
-  });
+  // const buttonExit = document.createElement('button');
+  // buttonExit.className = 'bttnExitHome';
+  // buttonExit.textContent = 'Cerrar sesión';
+  // // Agregamos un evento de clic al botón 'Cerrar sesión' para salir y navegar a la ruta raíz
+  // buttonExit.addEventListener('click', () => {
+  //   exitFn().then(() => {
+  //     navigateTo('/');
+  //   });
+  // });
   // Agregamos un evento de clic al botón 'Siguiente' para navegar a la ruta raíz
-  buttonHome.addEventListener('click', () => navigateTo('/'));
+  buttonHome.addEventListener('click', () => navigateTo('/feed'));
   // Agrega los elementos al DOM en la estructura deseada
   section.append(divOne);
   divOne.append(
@@ -44,7 +44,6 @@ const welcome = (navigateTo) => {
     titleWelcome,
     textBienvenida,
     buttonHome,
-    buttonExit,
   );
   // Devolvemos la sección como resultado de la función 'welcome'
   return section;
