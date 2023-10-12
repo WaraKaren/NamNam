@@ -12,6 +12,7 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  updateDoc,
 } from 'firebase/firestore';
 
 import {
@@ -41,7 +42,7 @@ export const db = getFirestore(app);
 
 // Función para guardar datos en la colección 'post'
 export const saveData = (title, description) => {
-  addDoc(collection(db, 'post'), { title, description });
+  addDoc(collection(db, 'post'), { title, description, isliked: false });
 };
 
 // Función para obtener datos de la colección 'post'
@@ -53,6 +54,7 @@ export const deletePost = (id) => deleteDoc(doc(db, 'post', id));
 // Función para obtener un documento en la colección 'post' por su ID
 export const editPost = (id) => getDoc(doc(db, 'post', id));
 
+export const updatePost = (id, newPost) => updateDoc(doc(db, 'post', id), newPost);
 // export const getData = (functionCallback) => {
 //   const consulta = query(collection(db, 'post'));
 //   onSnapshot(consulta, functionCallback);
