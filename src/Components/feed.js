@@ -1,9 +1,10 @@
+/* eslint-disable max-len */
 // import firebase from 'firebase/compat/app';
 // import { collection, addDoc } from 'firebase/firestore';
 // Required for side-effects
 import 'firebase/firestore';
 import {
-  saveData, onGetPost, deletePost, editPost, updatePost,
+  saveData, onGetPost, deletePost, editPost, updatePost, auth,
 } from '../firebaseconfig.js';
 import { exitFn } from './utils.js';
 
@@ -11,8 +12,24 @@ import { exitFn } from './utils.js';
 //   if (!localStorage.getItem('user')) {
 //     return navigateTo('/');
 //   }
+// const getUserName = () => {
+//   const username = (auth?.currentUser?.displayName) || "";
+//   return `Bienvenida ${username}`;
+// };
 
 function feed(navigateTo) {
+  if (!localStorage.getItem('user')) {
+    const modal = document.createElement('dialog');
+    modal.className = 'modalLocalStorage';
+    modal.textContent = 'Usuaria no registrada';
+    document.body.appendChild(modal);
+    modal.showModal();
+    setTimeout(() => {
+      modal.close();
+    }, '2500');
+    // modal.close();
+    return navigateTo('/');
+  }
   const main = document.createElement('main');
   main.className = 'mainFeed';
   const logoFeed = document.createElement('img');
@@ -22,7 +39,7 @@ function feed(navigateTo) {
   titleÑamÑam.textContent = 'Ñam Ñam';
   titleÑamÑam.className = 'titleFeed';
   const userName = document.createElement('h2');
-  userName.textContent = 'Nombre de usuaria';
+  userName.textContent = auth.currentUser.displayName ? auth.currentUser.displayName : auth.currentUser.email;
   const recipeForm = document.createElement('form');
   recipeForm.className = 'recipeForm';
   recipeForm.id = 'recipeForm';
@@ -36,6 +53,7 @@ function feed(navigateTo) {
   sectionInput.id = 'sectionInput';
   const recipeTitle = document.createElement('input');
   recipeTitle.type = 'text';
+  recipeTitle.required = true;
   recipeTitle.id = 'recipeTitle';
   recipeTitle.className = 'recipeTitle';
   recipeTitle.placeholder = 'Nombre de tu receta';
@@ -43,29 +61,23 @@ function feed(navigateTo) {
   sectionTextarea.id = 'sectionTextarea';
   sectionTextarea.className = 'sectionTextarea';
   const inputFeed = document.createElement('textarea');
+  inputFeed.required = true;
   inputFeed.placeholder = 'Escribe aquí tu receta...';
   inputFeed.className = 'inputFeed';
   inputFeed.id = 'inputFeed';
-  const btonSubmit = document.createElement('button');
-  btonSubmit.textContent = 'Publicar';
-  btonSubmit.id = 'btonSubmit';
-  btonSubmit.className = 'btonSubmit';
-
+  const bttonSubmit = document.createElement('button');
+  bttonSubmit.textContent = 'Publicar';
+  bttonSubmit.id = 'bttonSubmit';
+  bttonSubmit.className = 'bttonSubmit';
   const sectionData = document.createElement('section');
   sectionData.className = 'sectionData';
   sectionData.id = 'sectionData';
   let editStatus = false;
   let id = '';
-
   const buttonExit = document.createElement('button');
   buttonExit.className = 'bttnExitHome';
   buttonExit.textContent = 'Cerrar sesión';
   // Agregamos un evento de clic al botón 'Cerrar sesión' para salir y navegar a la ruta raíz
-  buttonExit.addEventListener('click', () => {
-    exitFn().then(() => {
-      navigateTo('/');
-    });
-  });
   // const recipePost = document.createElement('input');
   // recipePost.id = 'recipeTitle';
   // recipePost.className = 'recipeTitle';
@@ -97,21 +109,42 @@ function feed(navigateTo) {
     <section>
     <h3>${datas.title}</h3>
     <p>${datas.description}</p>
-    <button class='bton-delete' data-id= '${doc.id}'>Eliminar</button>
-    <button class='bton-edit' data-id= '${doc.id}'>Editar</button>
-    <img class='imagenLike' src= ${datas.isliked ? 'imagenes/dona-glaseada.png' : 'imagenes/dona-sin-glasear.png'} data-id= '${doc.id}'>
+    <button class='btton-delete' data-id= '${doc.id}'>Eliminar</button>
+    <button class='btton-edit' data-id= '${doc.id}'>Editar</button>
+    <img class='imageLike' src= ${datas.isliked ? 'imagenes/dona-glaseada.png' : 'imagenes/dona-sin-glasear.png'} data-id= '${doc.id}'>
     </section>
     `;
       });
       sectionData.innerHTML = html;
-      const btonDelete = sectionData.querySelectorAll('.bton-delete');
-      btonDelete.forEach((btn) => {
+      const bttonDelete = sectionData.querySelectorAll('.btton-delete');
+      bttonDelete.forEach((btn) => {
         btn.addEventListener('click', ({ target: { dataset } }) => {
-          deletePost(dataset.id);
+          // deletePost(dataset.id);
+          const modal = document.createElement('dialog');
+          modal.className = 'modal';
+          modal.textContent = '¿Deseas eliminar la publicación?';
+          const bttonCancel = document.createElement('button');
+          bttonCancel.id = 'bttonCancel';
+          bttonCancel.textContent = 'Cancelar';
+          const bttonConfirm = document.createElement('button');
+          bttonConfirm.id = 'bttonConfirm';
+          bttonConfirm.textContent = 'Aceptar';
+          if (btn) {
+            document.body.appendChild(modal);
+            modal.append(bttonConfirm, bttonCancel);
+            modal.showModal();
+            bttonConfirm.addEventListener('click', () => {
+              deletePost(dataset.id);
+              modal.close();
+            });
+            bttonCancel.addEventListener('click', () => {
+              modal.close();
+            });
+          }
         });
       });
-      const btonEdit = sectionData.querySelectorAll('.bton-edit');
-      btonEdit.forEach((btn) => {
+      const bttonEdit = sectionData.querySelectorAll('.btton-edit');
+      bttonEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           const doc = await editPost(e.target.dataset.id);
           const infoPost = doc.data();
@@ -119,11 +152,11 @@ function feed(navigateTo) {
           recipeForm.inputFeed.value = infoPost.description;
           editStatus = true;
           id = e.target.dataset.id;
-          recipeForm.btonSubmit.innerHTML = 'Editar';
+          recipeForm.bttonSubmit.innerHTML = 'Editar';
         });
       });
-      const botonLike = sectionData.querySelectorAll('.imagenLike');
-      botonLike.forEach((bton) => {
+      const bttonLike = sectionData.querySelectorAll('.imageLike');
+      bttonLike.forEach((bton) => {
         bton.addEventListener('click', async (e) => {
           const doc = await editPost(e.target.dataset.id);
           const infoPost = doc.data();
@@ -154,10 +187,15 @@ function feed(navigateTo) {
     // console.log('VALOR', e.target.recipeTitle.value);
     // await saveData(title, description);
   });
+  buttonExit.addEventListener('click', () => {
+    exitFn().then(() => {
+      navigateTo('/');
+    });
+  });
 
   main.append(logoFeed, titleÑamÑam, userName, recipeForm, sectionData, buttonExit);
-  recipeForm.append(fieldsetInput);
-  fieldsetInput.append(postLegend, sectionInput, sectionTextarea, btonSubmit);
+  recipeForm.appendChild(fieldsetInput);
+  fieldsetInput.append(postLegend, sectionInput, sectionTextarea, bttonSubmit);
   sectionInput.appendChild(recipeTitle);
   sectionTextarea.appendChild(inputFeed);
 

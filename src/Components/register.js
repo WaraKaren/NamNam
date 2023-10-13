@@ -34,16 +34,16 @@ const register = (navigateTo) => {
   textPassword.className = 'textPasswordRegister';
   // const inputConfirmPassRegister = document.createElement('input');
   // inputConfirmPassRegister.placeholder = 'Confirma tu contraseña';
-  const buttonWelcome = document.createElement('button');
-  buttonWelcome.className = 'btonRegister';
-  buttonWelcome.textContent = 'Registrar';
-  const buttonSubmitRegister = document.createElement('button');
-  buttonSubmitRegister.className = 'btonRegresar';
-  buttonSubmitRegister.textContent = 'Regresar';
+  const bttonRegister = document.createElement('button');
+  bttonRegister.className = 'bttonRegister';
+  bttonRegister.textContent = 'Registrar';
+  const bttonBackToHome = document.createElement('button');
+  bttonBackToHome.className = 'bttonBackToHome';
+  bttonBackToHome.textContent = 'Regresar';
   // Agrega un escuchador de eventos al botón de registro
-  buttonWelcome.addEventListener('click', form.submit());
+  bttonRegister.addEventListener('click', form.submit());
   // Agrega un escuchador de eventos al botón de regreso
-  buttonSubmitRegister.addEventListener('click', () => {
+  bttonBackToHome.addEventListener('click', () => {
     // Navega a la página principal al hacer clic en este botón
     navigateTo('/');
   });
@@ -68,8 +68,8 @@ const register = (navigateTo) => {
     inputPassRegister,
     textPassword,
     // inputConfirmPassRegister,
-    buttonWelcome,
-    buttonSubmitRegister,
+    bttonRegister,
+    bttonBackToHome,
   );
   // Devuelve la sección creada como resultado de la función 'register'
   return section;
