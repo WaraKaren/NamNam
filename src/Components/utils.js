@@ -12,7 +12,6 @@ import {
 import { auth } from '../firebaseconfig';
 // Función para registrar un usuario con correo y contraseña
 export const createUserWithEmail = (email, password, navigateTo) => new Promise(() => {
-
   // Llamar a la función createUserWithEmailAndPassword con el objeto 'auth', email y contraseña
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -30,9 +29,9 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
       sectionModal.id = 'sectionModal';
       const modal = document.createElement('dialog');
       modal.className = 'modal';
-      const botonModal = document.createElement('button');
-      botonModal.id = 'botonModal';
-      botonModal.textContent = 'X';
+      const bttonModal = document.createElement('button');
+      bttonModal.id = 'bttonModal';
+      bttonModal.textContent = 'X';
 
       // Obtener el código y mensaje de error
       // const errorCode = error.code;
@@ -79,9 +78,9 @@ export const createUserWithEmail = (email, password, navigateTo) => new Promise(
       // modalError.styled = 'block';
       // modaleError.
       // Agregar el botón para cerrar el modal
-      modal.appendChild(botonModal);
+      modal.appendChild(bttonModal);
       sectionModal.appendChild(modal);
-      botonModal.addEventListener('click', () => {
+      bttonModal.addEventListener('click', () => {
         modal.close();
       });
       // Agregar el modal al cuerpo del documento y mostrarlo
@@ -96,6 +95,7 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
     .then((userCredential) => {
       // Inicio de sesión exitoso, mostrar mensaje en la consola y redirigir al usuario
       window.console.log('USERCredential', userCredential);
+      localStorage.setItem('user', true);
       navigateTo('/feed');
       // const user = userCredential.user;
     })
@@ -104,9 +104,9 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
       sectionModal.id = 'sectionModal';
       const modal = document.createElement('dialog');
       modal.className = 'modal';
-      const botonModal = document.createElement('button');
-      botonModal.id = 'botonModal';
-      botonModal.textContent = 'X';
+      const bttonModal = document.createElement('button');
+      bttonModal.id = 'bttonModal';
+      bttonModal.textContent = 'X';
       // const errorCode = error.code;
       const errorMessage = error.message;
       switch (errorMessage) {
@@ -140,9 +140,9 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
         default:
           modal.innerHTML = 'Error al iniciar sesión';
       }
-      modal.appendChild(botonModal);
+      modal.appendChild(bttonModal);
       sectionModal.appendChild(modal);
-      botonModal.addEventListener('click', () => {
+      bttonModal.addEventListener('click', () => {
         modal.close();
       });
 
@@ -152,7 +152,7 @@ export const signInWithEmail = (email, password, navigateTo) => new Promise(() =
 });
 
 // Función para iniciar sesión con Google utilizando Firebase
-export const entrarPrueba = (navigateTo) => {
+export const signInWithGoogle = (navigateTo) => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider).then((res) => {
     window.console.log(res);

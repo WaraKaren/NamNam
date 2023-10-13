@@ -7,7 +7,7 @@
 
 // file home.js
 // Importamos una función desde otro archivo llamado 'utils.js'
-import { entrarPrueba } from './utils.js';
+import { signInWithGoogle } from './utils.js';
 // Definimos una función llamada 'home' que toma un argumento 'navigateTo'
 function home(navigateTo) {
   // Creamos una sección en el DOM y le asignamos una clase CSS
@@ -28,9 +28,9 @@ function home(navigateTo) {
   const titleTwo = document.createElement('h3');
   titleTwo.textContent = 'Únete a nuestra comunidad gastronómica y encuentra inspiración en cada bocado. ¿Listas para comenzar a compartir tus secretos en la cocina?';
   // Creamos un botón en el DOM, le asignamos una clase CSS y un texto
-  const buttonLogin = document.createElement('button');
-  buttonLogin.className = 'bttnLoginHome';
-  buttonLogin.textContent = 'Inicia sesión';
+  const bttonLogin = document.createElement('button');
+  bttonLogin.className = 'bttonToLogin';
+  bttonLogin.textContent = 'Inicia sesión';
   // Creamos una imagen en el DOM, le asignamos una clase CSS, un ID, definimos su fuente y alt
   const buttonGoogle = document.createElement('img');
   buttonGoogle.className = 'buttonGoogle';
@@ -42,13 +42,13 @@ function home(navigateTo) {
   buttonRegister.textContent = 'Regístrate';
 
   // Configuramos un evento de clic en el botón "Inicia sesión" para navegar a '/login'
-  buttonLogin.addEventListener('click', () => {
+  bttonLogin.addEventListener('click', () => {
     navigateTo('/login');
   });
   // Configuramos un evento de clic en el botón de Google para navegar a '/google'
   // Llamamos a la función 'entrarPrueba' y navegamos a '/welcome' después de una acción asincrónica
   buttonGoogle.addEventListener('click', () => {
-    entrarPrueba(navigateTo);
+    signInWithGoogle(navigateTo);
   });
   // Configuramos un evento de clic en el botón "Regístrate" para navegar a '/register'
   buttonRegister.addEventListener('click', () => {
@@ -60,7 +60,7 @@ function home(navigateTo) {
     logoHome,
     title,
     titleTwo,
-    buttonLogin,
+    bttonLogin,
     buttonRegister,
     buttonGoogle,
   );

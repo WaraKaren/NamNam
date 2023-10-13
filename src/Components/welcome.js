@@ -3,6 +3,15 @@
 // Definimos una función llamada 'welcome' que toma un argumento 'navigateTo'
 const welcome = (navigateTo) => {
   if (!localStorage.getItem('user')) {
+    const modal = document.createElement('dialog');
+    modal.className = 'modalLocalStorage';
+    modal.textContent = 'Usuaria no registrada';
+    document.body.appendChild(modal);
+    modal.showModal();
+    setTimeout(() => {
+      modal.close();
+    }, '2500');
+    // modal.close();
     return navigateTo('/');
   }
   // Creamos una sección en el DOM y le asignamos una clase CSS
@@ -13,18 +22,18 @@ const welcome = (navigateTo) => {
   const logo = document.createElement('img');
   logo.className = 'logoWelcome';
   logo.src = 'imagenes/logo.png';
-  const mensajeWelcome = document.createElement('h1');
-  mensajeWelcome.className = 'mensajeWelcome';
-  mensajeWelcome.textContent = '¡Usuaria registrada exitosamente!';
+  const welcomeMessage = document.createElement('h1');
+  welcomeMessage.className = 'welcomeMessage';
+  welcomeMessage.textContent = '¡Usuaria registrada exitosamente!';
   const titleWelcome = document.createElement('h2');
   titleWelcome.textContent = 'Bienvenida a Ñam Ñam';
   titleWelcome.className = 'titleWelcome';
-  const textBienvenida = document.createElement('p');
-  textBienvenida.className = 'textoBienvenida';
-  textBienvenida.textContent = 'Tu destino culinario en línea para compartir, descubrir y deleitarte con las mejores recetas caseras. Comparte tus creaciones culinarias en posts deliciosamente detallados y añade la dificultad para cocineras de todos los niveles.';
-  const buttonHome = document.createElement('button');
-  buttonHome.className = 'buttonHomeWelcome';
-  buttonHome.textContent = 'Siguiente';
+  const textWelcome = document.createElement('p');
+  textWelcome.className = 'textoBienvenida';
+  textWelcome.textContent = 'Tu destino culinario en línea para compartir, descubrir y deleitarte con las mejores recetas caseras. Comparte tus creaciones culinarias en posts deliciosamente detallados y añade la dificultad para cocineras de todos los niveles.';
+  const buttonToFeed = document.createElement('button');
+  buttonToFeed.className = 'buttonToFeed';
+  buttonToFeed.textContent = 'Siguiente';
   // const buttonExit = document.createElement('button');
   // buttonExit.className = 'bttnExitHome';
   // buttonExit.textContent = 'Cerrar sesión';
@@ -35,15 +44,15 @@ const welcome = (navigateTo) => {
   //   });
   // });
   // Agregamos un evento de clic al botón 'Siguiente' para navegar a la ruta raíz
-  buttonHome.addEventListener('click', () => navigateTo('/feed'));
+  buttonToFeed.addEventListener('click', () => navigateTo('/feed'));
   // Agrega los elementos al DOM en la estructura deseada
-  section.append(divOne);
+  section.appendChild(divOne);
   divOne.append(
     logo,
-    mensajeWelcome,
+    welcomeMessage,
     titleWelcome,
-    textBienvenida,
-    buttonHome,
+    textWelcome,
+    buttonToFeed,
   );
   // Devolvemos la sección como resultado de la función 'welcome'
   return section;
