@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-repeat: no-repeat;
 }
 
 * {
@@ -201,21 +202,21 @@ h1{
     object-fit: cover;
 }
 
-h1 {
+/*h1 {
     text-align: center;
     font-size: 1.3em;
     font-weight: bolder;
     margin: 1em 0.5em 2em 0.5em;
-}
+}*/
 
-.emailRegister {
+.inputEmailRegister {
     margin: 1em 1.7em 0.5em 1.5em;
     padding: 1%;
     font-size: medium;
     font-weight: normal;
 }
 
-.passwordRegister {
+.inputPassRegister {
     margin: 1em 1.5em 0.5em 1.5em;
     padding: 1%;
     font-size: medium;
@@ -269,7 +270,7 @@ h1 {
     object-fit: cover;
 }
 
-h1 {
+/*h1 {
     text-align: center;
     font-size: 1.3em;
     font-weight: bolder;
@@ -281,7 +282,7 @@ h2 {
     font-size: 1.1em;
     font-style: italic;
     margin: 1em 3em 0em 3em;
-}
+}*/
 
 p {
     text-align: center;
@@ -306,6 +307,86 @@ p {
     margin: 0.5em 1em 0.5em 1em;
     font-size: medium;
     font-weight: bold;
+}
+/*FEED*/
+.mainFeed {
+    background: #D9D9D9;
+    width: 32em;
+    height: 28.5em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sectionFeed {
+    display: flex;
+    align-items: center;
+}
+
+.logoFeed {
+    margin: 0.9em 0em 0em 0em;
+    width: 6em;
+    height: auto;
+    object-fit: cover;
+}
+
+.titleFeed {
+    margin: 0.9em 0em 0em 0em;
+    width: 7em;
+    height: auto;
+    font-size: 2em;
+}
+
+.bttnExitHome {
+    width: 8em;
+    height: 2.9em;
+    padding: 1%;
+    margin: 0.9em 2em 0em 9em;
+    font-size: 0.7em;
+}
+
+.userName {
+    font-size: 1.1em;
+}
+
+.fieldsetInput {
+    border-color: #f2ad94;
+    border-style: double;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 30em;
+}
+
+.recipeTitle {
+    border-color: #f2ad94;
+    border-style: double;
+    border-radius: 10px;
+    width: 32em;
+}
+
+.inputFeed {
+    margin: 0em 1em 0em 1em;
+    border-color: #f2ad94;
+    border-style: double;
+    border-radius: 10px;
+    width: 32.5em;
+    height: 10em;
+    resize: none;
+}
+
+.bttonSubmit {
+    width: 6em;
+    height: 2.9em;
+    padding: 1%;
+    margin: 0.5em 1em 0.5em 1em;
+    font-size: small;
+    font-weight: light;
 }
 
 .imageLike {
@@ -528,19 +609,19 @@ h1 {
     align-items: center;
 }
 
-.emailRegister {
+.inputEmailRegister {
     margin: 1em 1em 0.5em 1em;
     padding: 1%;
     font-size: medium;
     font-weight: normal;
 }
 
-.emailRegister:focus {
+.inputEmailRegister:focus {
     box-shadow: 0 0 0 0.5px #ffffff;
     outline: none;
 }
 
-.passwordRegister {
+.inputPassRegister {
     margin: 1em 1em 0.5em 1em;
     padding: 1%;
     font-size: medium;
@@ -651,6 +732,92 @@ h1 {
     font-size: medium;
     font-weight: bolder;
     text-align: center;
+}
+
+/* FEED */
+
+.mainFeed {
+    background: #D9D9D9;
+    width: 19em;
+    height: 35em;
+    border-color: #A9CA8F;
+    border-style: double;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sectionFeed {
+    display: flex;
+    align-items: center;
+}
+
+.logoFeed {
+    margin: 0.9em 0em 0em 0em;
+    width: 4em;
+    height: auto;
+    object-fit: cover;
+}
+
+.titleFeed {
+    margin: 0.9em 0em 0em 0em;
+    width: 6em;
+    height: auto;
+    font-size: 1.1em;
+}
+
+.bttnExitHome {
+    width: 8em;
+    height: 2.9em;
+    padding: 1%;
+    margin: 0.9em 2em 0em 5em;
+    font-size: 0.7em;
+}
+
+.userName {
+    font-size: 1.1em;
+}
+
+.fieldsetInput {
+    border-color: #f2ad94;
+    border-style: double;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 30em;
+}
+
+.recipeTitle {
+    border-color: #f2ad94;
+    border-style: double;
+    border-radius: 10px;
+    width: 32em;
+}
+
+.inputFeed {
+    margin: 0em 1em 0em 1em;
+    border-color: #f2ad94;
+    border-style: double;
+    border-radius: 10px;
+    width: 32.5em;
+    height: 10em;
+    resize: none;
+}
+
+.bttonSubmit {
+    width: 6em;
+    height: 2.9em;
+    padding: 1%;
+    margin: 0.5em 1em 0.5em 1em;
+    font-size: small;
+    font-weight: light;
+}
+
+.imageLike {
+    width: 40px;
 }
 
 }
