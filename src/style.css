@@ -329,7 +329,9 @@ p {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    margin-top: 0em;
+    position: absolute;
+    top: 1em;
+    left: 24em;
 }
 
 .sectionFeed {
