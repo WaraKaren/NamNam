@@ -414,6 +414,37 @@ p {
     margin: 1.5em 1em 0.5em 1em;
 }
 
+.modalPost {
+    width: 18em;
+    height: 8em;
+    padding: 1em;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+    border: 2px solid #f2ad94;
+    border-radius: 4px;
+}
+
+#bttonConfirm {
+    width: 6em;
+    height: 2em;
+    padding: 1px;
+    margin: 1em 1em 1em 6em;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+}
+
+#bttonCancel {
+    width: 6em;
+    height: 2em;
+    padding: 1px;
+    margin: 0.5em 1em 0em 6em;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+}
+
 .btton-edit {
     width: 6em;
     height: 2.9em;

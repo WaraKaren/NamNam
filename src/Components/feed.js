@@ -129,7 +129,7 @@ function feed(navigateTo) {
       btn.addEventListener('click', ({ target: { dataset } }) => {
         // deletePost(dataset.id);
         const modal = document.createElement('dialog');
-        modal.className = 'modal';
+        modal.className = 'modalPost';
         modal.textContent = '¿Deseas eliminar la publicación?';
         const bttonCancel = document.createElement('button');
         bttonCancel.id = 'bttonCancel';
@@ -137,6 +137,9 @@ function feed(navigateTo) {
         const bttonConfirm = document.createElement('button');
         bttonConfirm.id = 'bttonConfirm';
         bttonConfirm.textContent = 'Aceptar';
+        // const closeModal = () => {
+        //   document.body.removeChild(modalPost);
+        // };
         if (btn) {
           document.body.appendChild(modal);
           modal.append(bttonConfirm, bttonCancel);
