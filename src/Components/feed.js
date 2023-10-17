@@ -7,7 +7,6 @@ import {
   saveData, onGetPost, deletePost, editPost, updatePost, auth,
 } from '../firebaseconfig.js';
 import { exitFn } from './utils.js';
-import { getAuth } from 'firebase/auth';
 
 // const welcome = (navigateTo) => {
 //   if (!localStorage.getItem('user')) {
@@ -68,6 +67,8 @@ function feed(navigateTo) {
   sectionTextarea.id = 'sectionTextarea';
   sectionTextarea.className = 'sectionTextarea';
   const inputFeed = document.createElement('textarea');
+  inputFeed.setAttribute('rows', '4');
+  inputFeed.setAttribute('cols', '50');
   inputFeed.required = true;
   inputFeed.placeholder = 'Escribe aquí tu receta...';
   inputFeed.className = 'inputFeed';
@@ -111,12 +112,14 @@ function feed(navigateTo) {
     querySnapshot.forEach((doc) => {
       const datas = doc.data();
       html += `
-    <section>
+    <section class='sectionPost'>
     <h3>${datas.title}</h3>
     <p>${datas.description}</p>
+    <section class='sectionButtnPost'>
     <button class='btton-delete' data-id= '${doc.id}'>Eliminar</button>
     <button class='btton-edit' data-id= '${doc.id}'>Editar</button>
     <img class='imageLike' src= ${datas.isliked ? 'imagenes/dona-glaseada.png' : 'imagenes/dona-sin-glasear.png'} data-id= '${doc.id}'>
+    </section>
     </section>
     `;
     });
