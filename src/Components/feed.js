@@ -67,8 +67,6 @@ function feed(navigateTo) {
   sectionTextarea.id = 'sectionTextarea';
   sectionTextarea.className = 'sectionTextarea';
   const inputFeed = document.createElement('textarea');
-  inputFeed.setAttribute('rows', '4');
-  inputFeed.setAttribute('cols', '50');
   inputFeed.required = true;
   inputFeed.placeholder = 'Escribe aquí tu receta...';
   inputFeed.className = 'inputFeed';
