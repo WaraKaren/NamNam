@@ -48,8 +48,8 @@ function login(navigateTo) {
   // Agrega un evento de envío al form que evita el comportamiento por defecto de recargar la página
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = e.target.inputEmailLogin.value;
-    const password = e.target.inputPassLogin.value;
+    const email = inputEmail.value;
+    const password = inputPass.value;
     // Llama a la función signInWithEmail con email, password y la función navigateTo
     signInWithEmail(email, password, navigateTo);
   });
