@@ -104,7 +104,7 @@ function feed(navigateTo) {
   //   sectionData.innerHTML = data;
   // });
   onGetPost((querySnapshot) => {
-    console.log(querySnapshot);
+    // console.log(querySnapshot);
     // const querySnapshot = await getData();
     let html = '';
     querySnapshot.forEach((doc) => {
