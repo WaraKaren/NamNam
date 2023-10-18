@@ -17,6 +17,7 @@ const register = (navigateTo) => {
   form.className = 'FormRegister';
   // Establece un atributo personalizado 'data-algo' en el formulario
   form.setAttribute('data-algo', 'algo');
+  form.id = 'register-user';
   const inputEmailRegister = document.createElement('input');
   // Establece un marcador de posición
   inputEmailRegister.placeholder = 'Escribe tu correo electrónico';
@@ -48,15 +49,14 @@ const register = (navigateTo) => {
     navigateTo('/');
   });
   // Agrega un escuchador de eventos al formulario cuando se envía
-  bttonRegister.addEventListener('click', () => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault(); // cancela el comportamiento por defecto de refrescar la página
-      const email = inputEmailRegister.value; // Obtiene el correo electrónico del formulario
-      const password = inputPassRegister.value; // Obtiene la contraseña del formulario
-      // console.log(email, password); // nos muestra el email y clave digitado
-      // Llama a la función 'createUserWithEmail' para crear un usuario
-      createUserWithEmail(email, password, navigateTo);
-    });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // cancela el comportamiento por defecto de refrescar la página
+    const email = inputEmailRegister.value; // Obtiene el correo electrónico del formulario
+    const password = inputPassRegister.value; // Obtiene la contraseña del formulario
+    // console.log(email, password); // nos muestra el email y clave digitado
+    // Llama a la función 'createUserWithEmail' para crear un usuario
+    createUserWithEmail(email, password, navigateTo);
   });
   // Agrega los elementos al DOM en la estructura deseada
   section.appendChild(divOne);
