@@ -145,7 +145,7 @@ h3{
     object-fit: cover;
 }
 
-h1{
+.titleLogin {
     text-align: center;
     font-size: 1.5em;
     font-weight: bolder;
@@ -207,7 +207,7 @@ h1{
     object-fit: cover;
 }
 
-h1 {
+.titleRegister {
     text-align: center;
     font-size: 1.3em;
     font-weight: bolder;
@@ -277,14 +277,14 @@ h1 {
     object-fit: cover;
 }
 
-h1 {
+.welcomeMessage {
     text-align: center;
     font-size: 1.3em;
     font-weight: bolder;
     margin: 1em 0.5em 0.2em 0.5em;
 }
 
-h2 {
+.titleWelcome {
     text-align: center;
     font-size: 1.1em;
     font-style: italic;
@@ -307,15 +307,6 @@ p {
     font-weight: bold;
 }
 
-/* .bttnExitHome {
-    width: 10em;
-    height: 2.5em;
-    padding: 1%;
-    margin: 0.5em 1em 0.5em 1em;
-    font-size: medium;
-    font-weight: bold;
-}
- */
 /* FEED */
 
 .mainFeed {
@@ -595,7 +586,7 @@ h3 {
     object-fit: cover;
 }
 
-h1 {
+.titleLogin {
     margin: 0em 1em 1em 1em;
     text-align: center;
     font-size: 2em;
@@ -759,15 +750,6 @@ h1 {
 }
 
 .buttonHomeWelcome {
-    width: 12em;
-    height: 3em;
-    padding: 1%;
-    margin: 0.5em 3.2em 0.5em 3em;
-    font-size: medium;
-    font-weight: bold;
-}
-
-.bttnExitHome {
     width: 12em;
     height: 3em;
     padding: 1%;

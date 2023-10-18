@@ -15,6 +15,7 @@ function login(navigateTo) {
   logo.src = 'imagenes/logo.png';
   const title = document.createElement('h1');
   title.textContent = 'Inicia sesión';
+  title.className = 'titleLogin';
   // Crea un formulario (<form>) con la clase 'Form' para ingresar información de inicio de sesión
   const form = document.createElement('form');
   form.className = 'Form';
@@ -40,7 +41,7 @@ function login(navigateTo) {
   buttonReturn.className = 'bttnReturnLogin';
   buttonReturn.textContent = 'Regresar';
   // Agrega un evento de clic al botón de inicio de sesión para intentar enviar el formulario
-  buttonLogin.addEventListener('click', form.submit());
+  // buttonLogin.addEventListener('click', form.submit());
   // Agrega un evento de clic al botón de regreso para redirigir a la página principal
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');

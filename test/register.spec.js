@@ -1,12 +1,12 @@
 import { createUserWithEmail } from '../src/Components/utils.js';
-import register from '../src/Components/login.js';
+import register from '../src/Components/register.js';
 
 jest.mock('../src/Components/utils.js', () => ({
   createUserWithEmail: jest.fn().mockImplementation(() => Promise.resolve()),
 }));
 
 describe('Pruebas de Register', () => {
-  it('Autenticación con correo electrónico y contraseña, debería redireccionar a /welcome', () => {
+  it('Registro con correo electrónico y contraseña, debería llamar a createUserWithEmail', () => {
     // Paso 1: Visualizar el formulario de login.
     const registerDiv = register();
     // const onSubmit = jest.fn((e) => e.preventDefault());
@@ -15,8 +15,8 @@ describe('Pruebas de Register', () => {
     registerDiv.querySelector('#inputPassRegister').value = 'maria123';
 
     // Paso 3: Enviamos el formulario dando clic en el botón `Login`.
-    // registerDiv.querySelector('.FormRegister').dispatchEvent(new Event('submit'));
-    console.log(registerDiv.querySelector('.bttonRegister'));
+    registerDiv.querySelector('#register-user').dispatchEvent(new Event('submit'));
+    // console.log(registerDiv.querySelector('.bttonRegister'));
 
     // Paso 4: Verificamos visualmente que la aplicación redija a `/home`.
     expect(createUserWithEmail).toHaveBeenCalled();
