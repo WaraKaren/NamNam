@@ -1,10 +1,12 @@
 /* eslint-disable max-len */
-// import firebase from 'firebase/compat/app';
-// import { collection, addDoc } from 'firebase/firestore';
-// Required for side-effects
 import 'firebase/firestore';
 import {
-  saveData, onGetPost, deletePost, editPost, updatePost, auth,
+  saveData,
+  onGetPost,
+  deletePost,
+  editPost,
+  updatePost,
+  auth,
 } from '../firebaseconfig.js';
 import { exitFn } from './utils.js';
 
@@ -16,9 +18,11 @@ import { exitFn } from './utils.js';
 //   const username = (auth?.currentUser?.displayName) || "";
 //   return `Bienvenida ${username}`;
 // };
-
+// Declaración de una función llamada "feed" que toma un argumento "navigateTo".
 function feed(navigateTo) {
+  // Verificación de si el usuario está registrado a través de localStorage.
   if (!localStorage.getItem('user')) {
+    // Creación de un elemento modal para mostrar un mensaje de usuario no registrado.
     const modal = document.createElement('dialog');
     modal.className = 'modalLocalStorage';
     modal.textContent = 'Usuaria no registrada';
@@ -28,8 +32,10 @@ function feed(navigateTo) {
       modal.close();
     }, '2500');
     // modal.close();
+    // Redireccionamiento a la página principal.
     return navigateTo('/');
   }
+  // Creación de elementos HTML para la página principal.
   const main = document.createElement('main');
   main.className = 'mainFeed';
   const section = document.createElement('section');
@@ -103,10 +109,13 @@ function feed(navigateTo) {
   //   });
   //   sectionData.innerHTML = data;
   // });
+
+  // Este bloque se ejecuta cuando se obtienen publicaciones de la base de datos.
   onGetPost((querySnapshot) => {
     // console.log(querySnapshot);
     // const querySnapshot = await getData();
     let html = '';
+    // Iteramos a través de cada documento en la colección de publicaciones.
     querySnapshot.forEach((doc) => {
       const datas = doc.data();
       html += `
@@ -121,11 +130,14 @@ function feed(navigateTo) {
     </section>
     `;
     });
+    // Actualizamos el contenido de "sectionData" con las publicaciones.
     sectionData.innerHTML = html;
+    // Manejamos eventos para los botones de eliminar.
     const bttonDelete = sectionData.querySelectorAll('.btton-delete');
     bttonDelete.forEach((btn) => {
       btn.addEventListener('click', ({ target: { dataset } }) => {
         // deletePost(dataset.id);
+        // Creamos un modal para confirmar la eliminación.
         const modal = document.createElement('dialog');
         modal.className = 'modalPost';
         modal.textContent = '¿Deseas eliminar la publicación?';
@@ -143,6 +155,7 @@ function feed(navigateTo) {
           modal.append(bttonConfirm, bttonCancel);
           modal.showModal();
           bttonConfirm.addEventListener('click', () => {
+            // Llamamos a la función "deletePost" para eliminar la publicación.
             deletePost(dataset.id);
             modal.close();
           });
@@ -152,11 +165,14 @@ function feed(navigateTo) {
         }
       });
     });
+    // Manejamos eventos para los botones de editar.
     const bttonEdit = sectionData.querySelectorAll('.btton-edit');
     bttonEdit.forEach((btn) => {
       btn.addEventListener('click', async (e) => {
+        // Obtenemos la información de la publicación a editar.
         const doc = await editPost(e.target.dataset.id);
         const infoPost = doc.data();
+        // Rellenamos el formulario con los datos de la publicación seleccionada.
         recipeForm.recipeTitle.value = infoPost.title;
         recipeForm.inputFeed.value = infoPost.description;
         editStatus = true;
@@ -164,17 +180,20 @@ function feed(navigateTo) {
         recipeForm.bttonSubmit.innerHTML = 'Editar';
       });
     });
+    // Manejamos eventos para los botones de "Me gusta".
     const bttonLike = sectionData.querySelectorAll('.imageLike');
     bttonLike.forEach((bton) => {
       bton.addEventListener('click', async (e) => {
+        // Obtenemos la información de la publicación a la que se le dio "Me gusta".
         const doc = await editPost(e.target.dataset.id);
         const infoPost = doc.data();
+        // Actualizamos el estado "Me gusta" de la publicación y la guardamos en la base de datos.
         updatePost(e.target.dataset.id, { ...infoPost, isliked: !infoPost.isliked });
       });
     });
   });
   // });
-
+  // Manejamos el evento de envío del formulario de publicación de recetas.
   recipeForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -182,8 +201,10 @@ function feed(navigateTo) {
     const description = recipeForm['.inputFeed']; */
     // saveData(recipeTitle.value, inputFeed.value);
     if (!editStatus) {
+      // Si no estamos editando, llamamos a la función "saveData" para guardar una nueva publicación.
       saveData(recipeTitle.value, inputFeed.value);
     } else {
+      // Si estamos editando, llamamos a la función "updatePost" para actualizar la publicación.
       updatePost(id, {
         title: recipeTitle.value,
         description: inputFeed.value,
@@ -191,17 +212,19 @@ function feed(navigateTo) {
 
       editStatus = false;
     }
+    // Restablecemos el formulario.
     recipeForm.reset();
     // console.log('VALOR', title, 'OTRO', description);
     // console.log('VALOR', e.target.recipeTitle.value);
     // await saveData(title, description);
   });
+  // Manejamos el evento de cierre de sesión.
   buttonExit.addEventListener('click', () => {
     exitFn().then(() => {
       navigateTo('/');
     });
   });
-
+  // Agregamos elementos a la estructura de la página principal.
   main.append(section, userName, recipeForm, sectionData);
   section.append(logoFeed, titleÑamÑam, buttonExit);
   recipeForm.appendChild(fieldsetInput);
@@ -226,7 +249,8 @@ function feed(navigateTo) {
   //   isliked = !isliked;
   // });
 
+  // La función "feed" retorna el elemento "main" que contiene la estructura de la página principal.
   return main;
 }
-
+// Exportación de la función "feed" como un módulo.
 export default feed;
