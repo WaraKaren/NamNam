@@ -1,12 +1,3 @@
-// Este es el punto de entrada de tu aplicacion
-// import { onAuthStateChanged } from 'firebase/auth';
-// import { auth } from './firebaseconfig.js';
-
-// import { myFunction } from './lib/index.js';
-
-// import {
-//   getRedirectResult,
-// } from 'firebase/auth';
 // Importamos los componentes y configuraciones necesarios
 import home from './Components/home.js';
 import login from './Components/login.js';
@@ -15,7 +6,6 @@ import register from './Components/register.js';
 import welcome from './Components/welcome.js';
 import feed from './Components/feed.js';
 
-// import { auth } from './firebaseconfig.js';
 // Definimos las rutas de la aplicación junto con los componentes asociados
 const routes = [
   { path: '/', component: home },
@@ -31,12 +21,6 @@ const root = document.getElementById('root');
 
 // Función para navegar a una ruta específica
 export function navigateTo(hash) {
-  // primera carga si vengo de redireccióm
-  // const userCred = await getRedirectResult(auth);
-  // console.log("usercred", userCred)
-  // if (userCred) {
-  //   navigateTo('/welcome');
-  // }
 // Busca la ruta correspondiente en el arreglo 'routes'.
   const route = routes.find((routeFound) => routeFound.path === hash);
   // Si la ruta existe y tiene un componente asociado.

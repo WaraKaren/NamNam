@@ -19,7 +19,7 @@ describe('Pruebas de login', () => {
     // Paso 3: Enviamos el formulario dando clic en el botón `Login`.
     loginDiv.querySelector('.Form').dispatchEvent(new Event('submit'));
 
-    // Paso 4: Verificamos visualmente que la aplicación redija a `/home`.
+    // Paso 4: Verificamos visualmente que la aplicación redirija a `/feed`.
     expect(signInWithEmail).toHaveBeenCalled();
   });
 });
