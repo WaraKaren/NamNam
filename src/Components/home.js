@@ -4,7 +4,7 @@
 //   GoogleAuthProvider,
 // } from 'firebase/auth';
 // import { auth } from '../firebaseconfig';
-
+import logo from './imagenes/logo.png';
 // file home.js
 // Importamos una función desde otro archivo llamado 'utils.js'
 import { signInWithGoogle } from './utils.js';
@@ -17,9 +17,13 @@ function home(navigateTo) {
   const divOne = document.createElement('div');
   divOne.className = 'divOneHome';
   // Creamos una imagen en el DOM, le asignamos una clase CSS y definimos su fuente
-  const logoHome = document.createElement('img');
+/*   const logoHome = document.createElement('img');
   logoHome.className = 'logoHome';
-  logoHome.src = 'imagenes/logo.png';
+  logoHome.src = 'imagenes/logo.png'; */
+  const logoHome = document.createElement('img');
+logoHome.className = 'logoHome';
+logoHome.src = logo;
+
   // Creamos un encabezado <h2> en el DOM y le asignamos un texto
   const title = document.createElement('h2');
   // const user = getUserName();
