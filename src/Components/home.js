@@ -4,7 +4,7 @@
 //   GoogleAuthProvider,
 // } from 'firebase/auth';
 // import { auth } from '../firebaseconfig';
-import logo from './imagenes/logo.png';
+import logo from '../imagenes/logo.png';
 // file home.js
 // Importamos una función desde otro archivo llamado 'utils.js'
 import { signInWithGoogle } from './utils.js';
