@@ -8,6 +8,7 @@
 // file home.js
 // Importamos una función desde otro archivo llamado 'utils.js'
 import { signInWithGoogle } from './utils.js';
+import { logoGoogle } from '../imagenes/btn_google_signin_light_normal_web@2x.png';
 // Definimos una función llamada 'home' que toma un argumento 'navigateTo'
 function home(navigateTo) {
   // Creamos una sección en el DOM y le asignamos una clase CSS
@@ -35,7 +36,7 @@ function home(navigateTo) {
   const buttonGoogle = document.createElement('img');
   buttonGoogle.className = 'buttonGoogle';
   buttonGoogle.id = 'buttonGoogle';
-  buttonGoogle.src = 'imagenes/btn_google_signin_light_normal_web@2x.png';
+  buttonGoogle.src = logoGoogle;
   buttonGoogle.alt = 'imagen botón Google';
   const buttonRegister = document.createElement('button');
   buttonRegister.className = 'bttnRegisterHome';
