@@ -1,5 +1,8 @@
 // Importamos una función desde ./utils.js
 // import { exitFn } from './utils.js';
+import logoR from '../imagenes/logo.png';
+//importaciond e img para vite
+
 // Definimos una función llamada 'welcome' que toma un argumento 'navigateTo'
 const welcome = (navigateTo) => {
   if (!localStorage.getItem('user')) {
@@ -21,7 +24,7 @@ const welcome = (navigateTo) => {
   divOne.className = 'divOneWelcome';
   const logo = document.createElement('img');
   logo.className = 'logoWelcome';
-  logo.src = 'imagenes/logo.png';
+  logo.src = logoR;
   const welcomeMessage = document.createElement('h1');
   welcomeMessage.className = 'welcomeMessage';
   welcomeMessage.textContent = '¡Usuaria registrada exitosamente!';

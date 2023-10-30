@@ -1,6 +1,9 @@
 // Importa la función 'createUserWithEmail' desde el archivo './utils'
 import { createUserWithEmail } from './utils';
 // Define una función llamada 'register' que toma 'navigateTo' como argumento
+
+import logoR from '../imagenes/logo.png';
+//importaciond e img para vite
 const register = (navigateTo) => {
   const section = document.createElement('section');
   section.className = 'containerRegister';
@@ -8,7 +11,7 @@ const register = (navigateTo) => {
   divOne.className = 'divOneRegister';
   const logo = document.createElement('img');
   logo.className = 'logoRegister';
-  logo.src = 'imagenes/logo.png';
+  logo.src = logoR;
   const title = document.createElement('h1');
   title.textContent = 'Crea tu cuenta';
   title.className = 'titleRegister';

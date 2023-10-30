@@ -6,7 +6,7 @@
 // import { auth } from '../firebaseconfig';
 // importacion de imagenes Vite para que luego se visualice en vercel
 import logo from '../imagenes/logo.png';
-import bGoogle from '..imagenes/btn_google_signin_light_normal_web@2x.png';
+import bGoogle from '../imagenes/btn_google_signin_light_normal_web@2x.png';
 // file home.js
 // Importamos una función desde otro archivo llamado 'utils.js'
 import { signInWithGoogle } from './utils.js';

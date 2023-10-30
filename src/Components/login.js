@@ -1,6 +1,9 @@
 // Importa la función signInWithEmail desde el archivo utils.js
 import { signInWithEmail } from './utils';
 // Define la función login que toma un argumento navigateTo
+
+//importacion de imgs para vite
+import logoL from '../imagenes/logo.png';
 function login(navigateTo) {
   // Crea un elemento section para el contenedor principal de la página de inicio de sesión
   const section = document.createElement('section');
@@ -12,7 +15,7 @@ function login(navigateTo) {
   // Crea una imagen con la clase 'logoLogin' y la fuente de la imagen 'imagenes/logo.png'
   const logo = document.createElement('img');
   logo.className = 'logoLogin';
-  logo.src = 'imagenes/logo.png';
+  logo.src = logoL;
   const title = document.createElement('h1');
   title.textContent = 'Inicia sesión';
   title.className = 'titleLogin';

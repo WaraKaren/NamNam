@@ -9,7 +9,10 @@ import {
   auth,
 } from '../firebaseconfig.js';
 import { exitFn } from './utils.js';
-
+//importacion de Imgs
+import logoF from '../imagenes/logo.png';
+import donaG from '../imagenes/dona-glaseada.png';
+import donaSinG from '../imagenes/dona-sin-glasear.png';
 // const welcome = (navigateTo) => {
 //   if (!localStorage.getItem('user')) {
 //     return navigateTo('/');
@@ -42,7 +45,7 @@ function feed(navigateTo) {
   section.className = 'sectionFeed';
   const logoFeed = document.createElement('img');
   logoFeed.className = 'logoFeed';
-  logoFeed.src = 'imagenes/logo.png';
+  logoFeed.src = logoF;
   const titleÑamÑam = document.createElement('h1');
   titleÑamÑam.textContent = 'Ñam Ñam';
   titleÑamÑam.className = 'titleFeed';
@@ -125,7 +128,7 @@ function feed(navigateTo) {
     <section class='sectionButtnPost'>
     <button class='btton-delete' data-id= '${doc.id}'>Eliminar</button>
     <button class='btton-edit' data-id= '${doc.id}'>Editar</button>
-    <img class='imageLike' src= ${datas.isliked ? 'imagenes/dona-glaseada.png' : 'imagenes/dona-sin-glasear.png'} data-id= '${doc.id}'>
+    <img class='imageLike' src= ${datas.isliked ? donaG : donaSinG} data-id= '${doc.id}'>
     </section>
     </section>
     `;
