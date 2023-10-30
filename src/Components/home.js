@@ -8,7 +8,7 @@
 // file home.js
 // Importamos una función desde otro archivo llamado 'utils.js'
 import { signInWithGoogle } from './utils.js';
-import { logoGoogle } from '../imagenes/btn_google_signin_light_normal_web@2x.png';
+import logoGoogle from '../imagenes/btn_google_signin_light_normal_web@2x.png';
 // Definimos una función llamada 'home' que toma un argumento 'navigateTo'
 function home(navigateTo) {
   // Creamos una sección en el DOM y le asignamos una clase CSS
